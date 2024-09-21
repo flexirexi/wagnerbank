@@ -1,7 +1,7 @@
 var global_user_id;
 var global_user_firstname;
 var global_user_lastname;
-
+export default global_user_id;
 
 function login(login_username, login_pw) {
     fetch("./assets/data/data_login.csv").then(response => response.text()).then(data => {
@@ -15,7 +15,6 @@ function login(login_username, login_pw) {
                 global_user_firstname  = line[1];
                 global_user_lastname   = line[2];
                 alert(`Welcome back to Wagner Bank, ${global_user_firstname} ${global_user_lastname}! \n` + global_user_id + "\n" + global_user_firstname + "\n" + global_user_lastname);
-
                 window.location.assign("dashboard.html");
                 return;
             }
