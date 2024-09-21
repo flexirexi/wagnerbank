@@ -1,7 +1,7 @@
 var global_user_id;
 var global_user_firstname;
 var global_user_lastname;
-export default global_user_id;
+export {global_user_id};
 
 function login(login_username, login_pw) {
     fetch("./assets/data/data_login.csv").then(response => response.text()).then(data => {
