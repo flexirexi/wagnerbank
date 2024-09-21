@@ -12,16 +12,25 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 
 function fetch_user(username, pw) {
-    let dataset = fetch("./assets/data/data_login.csv").then(response => response.text()).then(data => {
+    fetch("./assets/data/data_login.csv").then(response => response.text()).then(data => {
         let lines = data.split("\n");
-        data = [];
-
+        let line;
+        let user_id;
+        let user_firstname;
+        let user_lastname;
+        console.log(username + " " + pw);
+        
         for (let i = 0; i < lines.length; i++) {
-            data[i] = lines[i].split(";");
+            line = lines[i].split(";");
+            console.log(line);
+            if(line[3] == username && line[4] == pw) {
+                user_id         = line[0];
+                user_firstname  = line[1];
+                user_lastname   = line[2];
+                alert(user_id + "\n" + user_firstname + "\n" + user_lastname + "\n" + username + "\n" + pw);
+                return;
+            }
         }
-
-        return data;
+        alert("Wrong USERNAME or PASSWORD. Please try again.");
     });
-    
-    alert(dataset);
 }
