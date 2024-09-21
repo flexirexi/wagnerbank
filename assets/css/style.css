@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700');
 
+
+
 /* 01 GENERIC STYLES - ALL PAGES */
 * {
     margin:         0;
@@ -23,6 +25,8 @@ body {
     width:      100vw;
 }
 
+
+
 /* 02 UTILITY CLASSES & DEVIATIONS FROM GENERIC STYLES - ALL PAGES */
 .background_dblue {
     background-color: #0b183d;
@@ -37,7 +41,7 @@ body {
 }
 
 .background_black_transp {
-    background-color: rgba(1, 1, 1, 0.5);
+    background-color: rgba(1, 1, 1, 0.6);
 }
 
 .textcolor_white {
@@ -63,7 +67,8 @@ body {
 
 /* small paddings - normal sized buttons, centralized, radius as listitems */
 .button_submit {
-
+    padding: 5px 40px;
+    border-radius: 3px;
 }
 
 /* large paddings, centralized, radius as listitems*/
@@ -79,4 +84,67 @@ body {
 /* for the divs in the two action pages - less radius/vertical margin but much dynamic&more horizontal margin*/
 .card_style {
 
+}
+
+.input_fontsize {
+    font-size: 20px;
+}
+
+
+
+/* 03 SPECIFIC ELEMENTS - ALL PAGES*/ 
+
+
+
+/* 04 SPECIFIC ELEMENTS - index.html */
+#login_body {
+    /*flex because of vertical alignment*/
+    display: flex;
+    /*align-items is vertically (or align-self in the direct child), justify-content horizontally (justify-self didnt work..)*/
+    align-items: center;
+    justify-content: center;
+}
+
+#login_main {
+    /*actual start*/
+   display: block;
+   justify-content: center;
+   padding: 5px;
+}
+
+#login_main > * {
+    display: block;
+    justify-content: center;
+    margin: 0 auto;
+
+}
+
+#login_form > * {
+    display: block;
+    margin:  0 auto;
+    margin-top: 40px;
+    border: none;
+    border-bottom: white 2px solid;
+}
+
+#login_button {
+    border-bottom: none;
+    font-size: 16px; 
+}
+
+/* consider browser compatibility..*/
+#login_form > *::placeholder {
+    color: #ffffff;
+  }
+
+#login_form > *::-ms-input-placeholder {
+    color: #ffffff;
+}
+
+#login_form > *:-ms-input-placeholder {
+    color: #ffffff;
+}
+
+#login_form > *:-moz-placeholder {
+    color: #ffffff;
 }
