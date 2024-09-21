@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
-    let bt_login = document.getElementById("login_button");
+    let login_form = document.getElementById("login_form");
     
-    bt_login.addEventListener("submit", function(event) {
+    login_form.addEventListener("submit", function(event){
         event.preventDefault();
-        alert("hallo");
+        
         let username= document.getElementById("username").value;
         let pw      = document.getElementById("pw").value;
         fetch_user(username, pw);
@@ -12,7 +12,16 @@ document.addEventListener("DOMContentLoaded", function() {
 })
 
 function fetch_user(username, pw) {
-    alert("hallo");
-    let dataset = fetch("./assets/data/dat_login.csv").then(response => response.text()).then(data => {return data;});
+    let dataset = fetch("./assets/data/data_login.csv").then(response => response.text()).then(data => {
+        let lines = data.split("\n");
+        data = [];
+
+        for (let i = 0; i < lines.length; i++) {
+            data[i] = lines[i].split(";");
+        }
+
+        return data;
+    });
+    
     alert(dataset);
 }
