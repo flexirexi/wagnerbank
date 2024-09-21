@@ -10,15 +10,18 @@ function login(login_username, login_pw) {
         
         for (let i = 0; i < lines.length; i++) {
             line = lines[i].split(";");
-            if(line[3] == username && line[4] == pw) {
+            if(line[3] == login_username && line[4] == login_pw) {
                 global_user_id         = line[0];
                 global_user_firstname  = line[1];
                 global_user_lastname   = line[2];
-                alert(global_user_id + "\n" + global_user_firstname + "\n" + global_user_lastname);
+                alert(`Welcome back to Wagner Bank, ${global_user_firstname} ${global_user_lastname}! \n` + global_user_id + "\n" + global_user_firstname + "\n" + global_user_lastname);
+
                 window.location.assign("dashboard.html");
                 return;
             }
         }
         alert("Wrong USERNAME or PASSWORD. Please try again.");
+        return;
     });
+    return;
 }
