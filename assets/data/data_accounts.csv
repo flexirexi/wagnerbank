@@ -1,0 +1,14 @@
+account;user;account number;account kind;account name;
+2001;1001;DE10 1403 1879 1804 1955 10;current account;Regular Account;
+2002;1001;1111 5448 5558 5586 4685 10;credit card;Credit Card Gold;
+2003;1001;DE10 1905 1915 1921 1922 10;savings account;Wagner Savings Account;
+2004;1001;DE10 1935 1936 1940 1955 10;savings account;Wagner Savings Account;
+2005;1002;DE10 1309 1919 2005 1896 10;current account;Regular Account;
+2006;1003;DE10 2204 1724 1202 1804 10;current account;Regular Account;
+2007;1003;1111 1238 588 3386 4685 10;credit card;Credit Card Gold;
+2008;1004;DE10 1712 1770 2603 1827 10;current account;Regular Account;
+2009;1004;2555 6658 4985 2254 1233 34;credit card;Credit Card Black;
+2010;1004;DE10 1798 1801 1808 1824 10;savings account;Wagner Savings Account;
+2011;1005;DE10 1009 1933 1902 2019 10;current account;Regular Account;
+2012;1005;2277 7856 4566 9822 3388 67;credit card;Credit Card Black;
+2013;1005;DE10 1952 1958 1983 2005 10 ;savings account;Wagner Savings Account;
