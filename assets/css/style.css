@@ -24,6 +24,7 @@ html, body {
     display:block;
     height:     100vh;
     width:      100vw;
+    overscroll-behavior: none;
 }
 
 main {
@@ -31,7 +32,7 @@ main {
     top: 40px;
     left: 0;
     right: 0;
-    bottom: 30px;
+    bottom: 35px;
     display: block;
     padding: 15px 20px;
 
@@ -42,7 +43,7 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    height: 30px;
+    height: 35px;
 }
 
 
@@ -100,6 +101,12 @@ footer {
     min-width: 300px;
     margin: 15px auto;
     border-radius: 15px;
+}
+
+.listrow:hover {
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+    transform: translate(0, 1px);
+   
 }
 
 .listitem_left {
@@ -348,10 +355,33 @@ footer {
     max-height: 80%;
     margin-top: 25px;
     overflow-y: scroll;
+    overscroll-behavior: contain;
 }
 
 #db_subtotal_container {
     padding-right: 15%;
-    padding-top: 15px;
+    padding-top: 20px;
     float: right;
+}
+
+#db_subtotal_text {
+    margin-right: 50px;
+    font-size: 13px;
+}
+
+#db_subtotal_amount {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#footer_timer {
+    height: 30px;
+    float: right;
+    padding: 0 13px;
+    align-content: center;
+    border-radius: 5px;
+    margin-right: 20px;
+    font-size: 13px;
+    
+
 }
