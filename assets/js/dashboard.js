@@ -1,5 +1,5 @@
-import {global_user_id} from "./index.js"; 
+import {global_user} from "./index.js"; 
 
 document.addEventListener("DOMContentLoaded", function(){
-    alert(global_user_id);
+    alert(global_user);
 })

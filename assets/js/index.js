@@ -1,7 +1,8 @@
-var global_user_id;
-var global_user_firstname;
-var global_user_lastname;
-export {global_user_id};
+export var global_user = {
+    id:        "",
+    firstname: "",
+    lastname:  "",
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     let login_form = document.getElementById("login_form");
@@ -12,8 +13,10 @@ document.addEventListener("DOMContentLoaded", function() {
         let username= document.getElementById("username").value;
         let pw      = document.getElementById("pw").value;
         login(username, pw);
-
+        
     })
+
+
 })
 
 function login(login_username, login_pw) {
@@ -24,10 +27,12 @@ function login(login_username, login_pw) {
         for (let i = 0; i < lines.length; i++) {
             line = lines[i].split(";");
             if(line[3] == login_username && line[4] == login_pw) {
-                global_user_id         = line[0];
-                global_user_firstname  = line[1];
-                global_user_lastname   = line[2];
-                alert(`Welcome back to Wagner Bank, ${global_user_firstname} ${global_user_lastname}! \n` + global_user_id + "\n" + global_user_firstname + "\n" + global_user_lastname);
+                global_user.id         = line[0];
+                global_user.firstname  = line[1];
+                global_user.lastname   = line[2];
+
+
+                alert(`Welcome back to Wagner Bank, ${global_user.firstname} ${global_user.lastname}! \n` + global_user.id + "\n" + global_user_firstname + "\n" + global_user_lastname);
                 window.location.assign("dashboard.html");
                 return;
             }
@@ -38,3 +43,9 @@ function login(login_username, login_pw) {
     return;
 }
 
+export function get_user_id() {
+    let x = global_user_firstname;
+    alert(x);
+    return x;
+
+}
