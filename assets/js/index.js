@@ -20,7 +20,7 @@ function login(login_username, login_pw) {
         for (let i = 0; i < lines.length; i++) {
             line = lines[i].split(";");
             if (line[3] == login_username && line[4] == login_pw) {
-                sessionStorage.clear();
+                sessionStorage.clear;
                 sessionStorage.setItem(user_id, line[0]);
                 sessionStorage.setItem(user_first, line[1]);
                 sessionStorage.setItem(user_last, line[2]);
