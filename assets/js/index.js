@@ -18,9 +18,9 @@ function login(login_username, login_pw) {
         for (let i = 0; i < lines.length; i++) {
             line = lines[i].split(";");
             if (line[3] == login_username && line[4] == login_pw) {
-                localStorage.setItem("id", line[0]);
-                localStorage.setItem("firstname", line[1]);
-                localStorage.setItem("lastname", line[2]);
+                sessionStorage.setItem("id", line[0]);
+                sessionStorage.setItem("firstname", line[1]);
+                sessionStorage.setItem("lastname", line[2]);
 
                 alert(`Welcome back to Wagner Bank, ${localStorage.getItem("first_name")} ${localStorage.getItem("last_name")}! \n` + localStorage.getItem("id"));
                 window.location.assign("dashboard.html");
@@ -28,8 +28,7 @@ function login(login_username, login_pw) {
             }
         }
         alert("Wrong USERNAME or PASSWORD. Please try again.");
-        return;
+        
     });
-    return;
 }
 
