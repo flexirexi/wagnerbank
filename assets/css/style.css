@@ -25,6 +25,10 @@ body {
     width:      100vw;
 }
 
+main {
+    padding:    25px 15px;
+}
+
 
 
 /* 02 UTILITY CLASSES & DEVIATIONS FROM GENERIC STYLES - ALL PAGES */
@@ -60,11 +64,6 @@ body {
     font-family: "Ubuntu", sans-serif;
 }
 
-/* centralize the objects vertically, small paddings, no margins though*/
-.header_style {
-
-}
-
 /* small paddings - normal sized buttons, centralized, radius as listitems */
 .button_submit {
     padding: 5px 40px;
@@ -89,8 +88,6 @@ body {
 .input_fontsize {
     font-size: 20px;
 }
-
-
 
 /* 03 SPECIFIC ELEMENTS - ALL PAGES*/ 
 #nav_bar {
@@ -125,14 +122,11 @@ body {
     border-radius: 3px;
 }
 
-
-
-
 #nav_bar_right_text {
-    color: white;
-    padding-left: 25px;
-    padding-right: 15px;
-    font-size: 12px;
+    color: lightgray;
+    padding-left: 20px;
+    padding-right: 10px;
+    font-size: 13px;
 
 }
 
