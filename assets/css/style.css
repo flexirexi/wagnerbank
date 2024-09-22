@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
 
 
 
@@ -26,7 +26,9 @@ body {
 }
 
 main {
-    padding:    25px 15px;
+    display: block;
+    padding:    15px 20px;
+
 }
 
 
@@ -60,8 +62,8 @@ main {
     border-color: #ffd966;
 }
 
-.font_ubuntu {
-    font-family: "Ubuntu", sans-serif;
+.font_cinzel {
+    font-family: "Cinzel", sans-serif;
 }
 
 /* small paddings - normal sized buttons, centralized, radius as listitems */
@@ -76,8 +78,15 @@ main {
 }
 
 /* for the transactions/accounts list - more radius/margin*/
-.listitem_style {
+.listrow_style {
+    display: block;
+    align-content: center;
+    height: 70px;
+    border-radius: 50px;
+}
 
+.listitem_style {
+    margin: 0 10px;
 }
 
 /* for the divs in the two action pages - less radius/vertical margin but much dynamic&more horizontal margin*/
@@ -89,13 +98,22 @@ main {
     font-size: 20px;
 }
 
+.section_header {
+    height: 50px;
+}
+
+.section_header_line {
+    width: 100%;
+    height: 0.5px;
+}
+
 /* 03 SPECIFIC ELEMENTS - ALL PAGES*/ 
 #nav_bar {
     display: flex;    
 }
 
 #nav_bar > * {
-    height: 50px;
+    height: 40px;
     align-content: center;
     overflow-y: hidden;
 }
@@ -131,6 +149,8 @@ main {
 }
 
 
+
+
 /* START COPY FROM https://www.w3schools.com (see README), I adjusted some styles only*/
 /* Dropdown button */
 .dropdown .dropbtn {
@@ -146,7 +166,7 @@ main {
 
   .dropbtn {
     justify-self: right;
-    height: 50px;
+    height: 40px;
   }
   
   /* Add a background color to navbar links on hover */
@@ -255,5 +275,11 @@ main {
     display: block;
     justify-content: center;
 
+}
+
+#db_table_container {
+    margin: 0 auto;
+    min-width: 750px;
+    margin-top: 25px;
 }
 
