@@ -93,6 +93,107 @@ body {
 
 
 /* 03 SPECIFIC ELEMENTS - ALL PAGES*/ 
+#nav_bar {
+    display: flex;
+    justify-content: center;
+    
+}
+
+#nav_bar > * {
+    height: 50px;
+    align-content: center;
+    overflow-y: hidden;
+}
+
+#nav_bar_left,
+#nav_bar_right {
+    display: flex;
+    margin: 0 20px;
+    align-items: center;
+}
+
+#nav_bar_middle {
+    justify-content: center;
+    margin: 0 auto;
+    
+}
+
+#nav_bar_right {
+    
+}
+
+#nav_bar_right_text {
+    color: white;
+    padding-left: 25px;
+    font-size: 12px;
+
+}
+
+
+/* START COPY FROM https://www.w3schools.com (see README), I adjusted some styles only*/
+/* Dropdown button */
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+
+  .dropbtn {
+    justify-self: right;
+  }
+  
+  /* Add a background color to navbar links on hover */
+  #nav_bar_right:hover {
+    background-color: rgba(0,0,0,0.4);
+  }
+  .nav_bar a:hover, .dropbtn:hover, .dropdown:hover {
+    background-color: rgba(0,0,0,0.6);
+    
+  }
+
+  .dropbtn:hover {
+    border-radius: 50%;
+  }
+
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position:absolute;
+    right:19px;
+    background-color: rgba(0,0,0,0.40);
+    min-width: 30px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: #ffd966;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+    
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+/* END COPY FROM https://www.w3schools.com/ ------------------------ */
+
 
 
 
@@ -148,3 +249,12 @@ body {
 #login_form > *:-moz-placeholder {
     color: #ffffff;
 }
+
+/* 05 SPECIFIC ELEMENTS - dashboard.hmtl */
+#db_body {
+    /*flex because of vertical alignment*/
+    display: block;
+    justify-content: center;
+
+}
+
