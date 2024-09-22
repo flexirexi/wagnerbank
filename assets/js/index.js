@@ -1,7 +1,7 @@
 export var global_user = {
     id:        "",
     firstname: "",
-    lastname:  "",
+    lastname:  "fff"
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -27,12 +27,13 @@ function login(login_username, login_pw) {
         for (let i = 0; i < lines.length; i++) {
             line = lines[i].split(";");
             if(line[3] == login_username && line[4] == login_pw) {
+                global_user = new Object;
                 global_user.id         = line[0];
                 global_user.firstname  = line[1];
                 global_user.lastname   = line[2];
+                
 
-
-                alert(`Welcome back to Wagner Bank, ${global_user.firstname} ${global_user.lastname}! \n` + global_user.id + "\n" + global_user_firstname + "\n" + global_user_lastname);
+                alert(`Welcome back to Wagner Bank, ${global_user.firstname} ${global_user.lastname}! \n` + global_user.id );
                 window.location.assign("dashboard.html");
                 return;
             }
