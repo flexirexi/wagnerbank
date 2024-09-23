@@ -2,12 +2,13 @@ const user_id = "id", user_first = "user_firstname", user_last = "user_lastname"
 
 document.addEventListener("DOMContentLoaded", function () {
     //alert(global_user.firstname + " " + global_user.lastname + ": " + global_user.id);
-
+    let logout = document.getElementById("logout");
+    logout.addEventListener("click", function(){
+        sessionStorage.clear;
+        window.location.replace("index.html");
+    })
     addNameToNavBar();
     fillWebsite();
-
-   
-    
 })
 
 function addNameToNavBar() {
@@ -45,9 +46,10 @@ function addRow(listContainer, line){
             <div class="listitem_middle_bottom textcolor_white ">${line[2]}</div>
         </div>
         <div class="listitem_right">
-            <span class="balance textcolor_white"># ###,##</span>
+            <span class="balance textcolor_white">${line[5]}</span>
             <span class=" textcolor_white">EUR</span>
         </div>
     </div>
-    `
+    `;
 }
+
