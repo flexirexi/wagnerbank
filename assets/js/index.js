@@ -31,7 +31,6 @@ function login(login_username, login_pw) {
             }
         }
         alert("Wrong USERNAME or PASSWORD. Please try again.");
-        
     });
 }
 
