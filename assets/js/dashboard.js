@@ -3,13 +3,16 @@ const user_id = "id", user_first = "user_firstname", user_last = "user_lastname"
 document.addEventListener("DOMContentLoaded", function () {
     //alert(global_user.firstname + " " + global_user.lastname + ": " + global_user.id);
     let logout = document.getElementById("logout");
-    logout.addEventListener("click", function(){
-        sessionStorage.clear;
-        window.location.replace("index.html");
-    })
+    logout.addEventListener("click", logout_user);
+    startCountdown()
     addNameToNavBar();
     fillWebsite();
 })
+
+function logout_user(){
+    sessionStorage.clear;
+    window.location.replace("index.html");
+}
 
 function addNameToNavBar() {
     let span = document.getElementById("nav_bar_right_text");
@@ -29,9 +32,7 @@ function fillWebsite() {
                 addRow(listContainer, line);               
             }
         }
-
         updateBalance();
-        startTimer();
     });
 }
 
@@ -60,7 +61,7 @@ function addRow(listContainer, line){
             <div class="listitem_middle_bottom textcolor_white ">${line[2]}</div>
         </div>
         <div class="listitem_right">
-            <span class="balance textcolor_white">${new Intl.NumberFormat('no').format(line[5])}</span>
+            <span class="balance textcolor_white">${new Intl.NumberFormat('no', {minimumFractionDigits: 2, maximumFractionDigits: 2,}).format(line[5])}</span>
             <span class=" textcolor_white">EUR</span>
         </div>
     </div>
@@ -70,11 +71,42 @@ function addRow(listContainer, line){
 function updateBalance(){
     let balances = document.getElementsByClassName("balance");
     let total = document.getElementById("db_subtotal_amount")
-    let total_amount = 0;
-    let amount = 0;
+    let total_amount = 0.00;
+    let amount = 0.00;
     for(let balance of balances){
-        amount = parseFloat(balance.innerHTML.replace("&nbsp;", "").replace(",",".").replace("−", "-"))
+        amount = parseFloat(balance.innerHTML.replace("&nbsp;", "").replace(",",".").replace("−", "-"));
         total_amount += amount;
     }
-    total.innerHTML = new Intl.NumberFormat('no').format(total_amount);
+    total.innerHTML = new Intl.NumberFormat('no', {minimumFractionDigits: 2, maximumFractionDigits: 2,}).format(total_amount);
+}
+
+function startCountdown() {
+    let footer_timer = document.getElementById("footer_timer_text");
+    let footer_timer_msgbox = document.getElementById("timer_msgbox_text");
+    let timer_msgbox_container = document.getElementById("timer_msgbox_container");
+    let timer_msgbox_btn = document.getElementById("timer_msgbox_btn");
+    let interval = 1000;
+    let timer = 180000;
+    let timer_text;
+
+    var countdown = window.setInterval(function(){
+        timer -= interval; 
+        timer_text = Math.floor(timer/60000).toString().padStart(2, "0") + ":" + (timer%60000/1000).toString().padStart(2,"0");
+        footer_timer_msgbox.innerHTML = timer_text;
+        footer_timer.innerHTML = timer_text;
+        if(timer==25000) {
+            timer_msgbox_container.style.display = "block"
+            timer_msgbox_btn.addEventListener("click", function(){
+                footer_timer.innerHTML = "03:00";
+                timer_msgbox_container.style.display = "none";
+                clearInterval(countdown);
+                startCountdown();
+            });
+        }
+        if(timer<=0) {
+            clearInterval(countdown);
+            logout_user();
+        }
+
+    }, interval);
 }

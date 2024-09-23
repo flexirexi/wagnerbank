@@ -40,65 +40,23 @@
         </section>
 
         <div id="db_table_container">
-            <div class="listrow background_lblue">
-                <div class="listitem_left textcolor_white">
-                    <i class="fa-solid fa-building-columns"></i>
+            <div id="db_table_row_dummy" class="listrow background_lblue">
+                <div class="listitem_left textcolor_white" style="background-color: darkgray;">
                 </div>
-                <div class="listitem_middle">
-                    <div class="listitem_middle_top textcolor_white font_cinzel">Regular Account</div>
-                    <div class="listitem_middle_bottom textcolor_white ">DE10 1234 4444 5555 6666 78</div>
+                <div class="listitem_middle" style="background-color: darkgray;">
+                    <div class="listitem_middle_top textcolor_white font_cinzel"></div>
+                    <div class="listitem_middle_bottom textcolor_white "> </div>
                 </div>
-                <div class="listitem_right">
-                    <span class="balance textcolor_white"># ###,##</span>
-                    <span class=" textcolor_white">EUR</span>
-                </div>
-            </div>
-
-
-            <div class="listrow background_lblue">
-                <div class="listitem_left textcolor_white">
-                    picture
-                </div>
-                <div class="listitem_middle">
-                    <div class="listitem_middle_top textcolor_white font_cinzel">Regular Account</div>
-                    <div class="listitem_middle_bottom textcolor_white ">DE10 1234 4444 5555 6666 78</div>
-                </div>
-                <div class="listitem_right">
-                    <span class=" textcolor_white"># ###,##</span>
-                    <span class=" textcolor_white">EUR</span>
-                </div>
-            </div>
-            <div class="listrow background_lblue">
-                <div class="listitem_left textcolor_white">
-                    picture
-                </div>
-                <div class="listitem_middle">
-                    <div class="listitem_middle_top textcolor_white font_cinzel">Regular Account</div>
-                    <div class="listitem_middle_bottom textcolor_white ">DE10 1234 4444 5555 6666 78</div>
-                </div>
-                <div class="listitem_right">
-                    <span class="balance textcolor_white"># ###,##</span>
-                    <span class=" textcolor_white">EUR</span>
-                </div>
-            </div>
-            <div class="listrow background_lblue">
-                <div class="listitem_left textcolor_white">
-                    picture
-                </div>
-                <div class="listitem_middle">
-                    <div class="listitem_middle_top textcolor_white font_cinzel">Regular Account</div>
-                    <div class="listitem_middle_bottom textcolor_white ">DE10 1234 4444 5555 6666 78</div>
-                </div>
-                <div class="listitem_right">
-                    <span class=" textcolor_white"># ###,##</span>
-                    <span class="balance textcolor_white">EUR</span>
+                <div class="listitem_right"  style="background-color: darkgray;">
+                    <span class=" textcolor_white"></span>
+                    <span class=" textcolor_white"></span>
                 </div>
             </div>
 
 
         </div>
         <section id="db_subtotal_container" class="textcolor_yellow">
-            <span id="db_subtotal_text">balance as of 31/08/2024</span>
+            <span id="db_subtotal_text">total as of 31/08/2024</span>
             <span id="db_subtotal_amount"># ###,##</span>
             <span>EUR</span>
         </section>
@@ -108,6 +66,14 @@
         <div id="footer_timer" class="background_black_transp textcolor_white">logout in:  <span id="footer_timer_text">##:##</span></div>
     </footer>
 
+    <div id="timer_msgbox_container">
+        <div id="timer_msgbox" class="textcolor_white">
+            <div>You will be logged out in <br>(confirm to continue):</div>
+            <span id="timer_msgbox_text">00:00</span>
+            <button id="timer_msgbox_btn" class="background_dblue textcolor_yellow font_cinzel">confirm</button>
+        </div>
+    </div>
+    
     <script type="module" src="assets/js/dashboard.js"></script>
     <script src="https://kit.fontawesome.com/ee874b1d34.js" crossorigin="anonymous"></script>
 </body>

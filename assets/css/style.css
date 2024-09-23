@@ -73,6 +73,10 @@ footer {
     color: #ffd966;
 }
 
+.textcolor_dblue {
+    color:#0b183d;
+}
+
 .bordercolor_yellow {
     border-color: #ffd966;
 }
@@ -103,10 +107,10 @@ footer {
     border-radius: 15px;
 }
 
-.listrow:hover {
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
-    transform: translate(0, 1px);
-   
+.listrow:hover, .listrow:active {
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.45);
+    transform: translate(0, 2px);
+    cursor:pointer;
 }
 
 .listitem_left {
@@ -285,6 +289,50 @@ footer {
   }
 /* END COPY FROM https://www.w3schools.com/ ------------------------ */
 
+#timer_msgbox_container {
+    display:none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    backdrop-filter: blur(5px);
+}
+
+#timer_msgbox {
+    display: block;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    height: 190px;
+    width: 70%;
+    background-color: black;
+    padding: 20px;
+    border-radius: 20px;
+
+}
+
+#timer_msgbox > * {
+    display: block;
+    text-align: center;
+    margin: 0 auto 28px auto;
+}
+
+#timer_msgbox_text {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#timer_msgbox_btn {
+    padding: 4px;
+    font-weight: bold;
+}
+
+#timer_msgbox_btn:active {
+    background-color: #ffd966;
+    color:#0b183d;
+}
 
 
 
@@ -356,6 +404,10 @@ footer {
     margin-top: 25px;
     overflow-y: scroll;
     overscroll-behavior: contain;
+}
+
+#db_table_row_dummy {
+    display: none;
 }
 
 #db_subtotal_container {
