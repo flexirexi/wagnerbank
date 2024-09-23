@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Dashboard</title>
+    <title>Account Info</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/favicon/logo_square.png">
@@ -27,15 +27,55 @@
                   <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                  <a href="#">logout</a>
+                  <a id="logout" href="#">logout</a>
                 </div>
               </div>
         </div>
     </header>
+
+    
     <main>
+        <section id="db_header_container" class="section_header">
+            <h1 id="db_header_text" class="section_header_text textcolor_yellow font_cinzel">Account Name</h1>
+            <div id="db_header_line" class="section_header_line background_yellow"></div>
+        </section>
+        <section id="acc_subtotal_container" class="textcolor_yellow">
+            <span id="acc_subtotal_text">balance as of 31/08/2024</span>
+            <span id="acc_subtotal_amount"></span>
+            <span>EUR</span>
+        </section>
+
+        <div id="db_table_container">
+            <div id="db_table_row_dummy" class="listrow background_lblue">
+                <div class="listitem_left textcolor_white" style="background-color: darkgray;">
+                </div>
+                <div class="listitem_middle" style="background-color: darkgray;">
+                    <div class="listitem_middle_top textcolor_white font_cinzel"></div>
+                    <div class="listitem_middle_bottom textcolor_white "> </div>
+                </div>
+                <div class="listitem_right"  style="background-color: darkgray;">
+                    <span class=" textcolor_white"></span>
+                    <span class=" textcolor_white"></span>
+                </div>
+            </div>
+
+
+        </div>
+
     </main>
+    
     <footer>
+        <div id="footer_timer" class="background_black_transp textcolor_white">logout in:  <span id="footer_timer_text">##:##</span></div>
     </footer>
+
+    <div id="timer_msgbox_container">
+        <div id="timer_msgbox" class="textcolor_white">
+            <div>You will be logged out in <br>(confirm to continue):</div>
+            <span id="timer_msgbox_text">00:00</span>
+            <button id="timer_msgbox_btn" class="background_dblue textcolor_yellow font_cinzel">confirm</button>
+        </div>
+    </div>
+    
     <script type="module" src="assets/js/dashboard.js"></script>
     <script src="https://kit.fontawesome.com/ee874b1d34.js" crossorigin="anonymous"></script>
 </body>

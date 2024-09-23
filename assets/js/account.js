@@ -52,6 +52,7 @@ function addRow(listContainer, line){
         default:
     }
     
+
     listContainer.innerHTML += `
     <div class="listrow background_lblue">
         <div class="listitem_left textcolor_white"> ${fontawesome.outerHTML} </div>
@@ -65,12 +66,6 @@ function addRow(listContainer, line){
         </div>
     </div>
     `;
-    let listrows = document.getElementsByClassName("listrow");
-    for(let listrow of listrows) {
-        listrow.addEventListener("click", function(){
-            window.location.assign("account.html");
-        })
-    }
 }
 
 function updateBalance(){
