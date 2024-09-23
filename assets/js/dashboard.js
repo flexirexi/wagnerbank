@@ -40,15 +40,17 @@ function addRow(listContainer, line){
     
     switch(line[3]) {
         case "current account":
-            fontawesome.className = "fa-solid fa-building-columns"
-            
+            fontawesome.className = "fa-solid fa-building-columns fa-xl";
+            break;
         case "savings account":
-            fontawesome.className = "fa-solid fa-piggy-bank fa-xl"
+            fontawesome.className = "fa-solid fa-piggy-bank fa-xl";
+            break;
         case "credit card":
-            fontawesome.className = "fa-solid fa-building-columns"
+            fontawesome.className = "fa-regular fa-credit-card fa-xl";
+            break;
         default:
     }
-    alert(line[3] + ": " + fontawesome.outerHTML);
+    
 
     listContainer.innerHTML += `
     <div class="listrow background_lblue">
