@@ -35,16 +35,23 @@
 
     
     <main>
-        <section id="db_header_container" class="section_header">
-            <h1 id="db_header_text" class="section_header_text textcolor_yellow font_cinzel">Account Name</h1>
-            <div id="db_header_line" class="section_header_line background_yellow"></div>
+        <section id="acc_header_container" class="section_header">
+            <h1 id="acc_header_text" class="section_header_text textcolor_yellow font_cinzel">Account Name</h1>
+            <div id="acc_header_right" >
+                <div class="acc_dropdown">
+                    <button class="acc_dropbtn">
+                        <i class="fa-solid fa-bars fa-xl" style="color: #ffd966"></i>
+                    </button>
+                    <div class="acc_dropdown-content">
+                      <a id="acc_send" href="#">Send Money...</a>
+                      <a id="acc_move" href="#">Move Money to another account</a>
+                      <a id="acc_info" href="#">Account Info</a>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section id="acc_subtotal_container" class="textcolor_yellow">
-            <span id="acc_subtotal_text">balance as of 31/08/2024</span>
-            <span id="acc_subtotal_amount"></span>
-            <span>EUR</span>
-        </section>
-
+        <div id="db_header_line" class="section_header_line background_yellow"></div>
+        
         <div id="db_table_container">
             <div id="db_table_row_dummy" class="listrow background_lblue">
                 <div class="listitem_left textcolor_white" style="background-color: darkgray;">
@@ -58,10 +65,13 @@
                     <span class=" textcolor_white"></span>
                 </div>
             </div>
-
-
         </div>
-
+        
+        <section id="acc_subtotal_container" class="textcolor_yellow">
+            <span id="acc_subtotal_text">balance as of 31/08/2024</span>
+            <span id="acc_subtotal_amount"></span>
+            <span>EUR</span>
+        </section>
     </main>
     
     <footer>
@@ -76,7 +86,7 @@
         </div>
     </div>
     
-    <script type="module" src="assets/js/dashboard.js"></script>
+    <script type="module" src="assets/js/account.js"></script>
     <script src="https://kit.fontawesome.com/ee874b1d34.js" crossorigin="anonymous"></script>
 </body>
 

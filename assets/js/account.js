@@ -24,6 +24,12 @@ function fillWebsite() {
         let lines = data.split("\n");
         let line;
         let listContainer = document.getElementById("db_table_container");
+        let menu_btn = document.getElementsByClassName("acc_dropdown")[0];
+        menu_btn.addEventListener("click", function(){
+            
+            let dropdown_content = document.getElementsByClassName("acc_dropdown-content")[0];
+            dropdown_content.style.display == "block" ? dropdown_content.style.display = "none" : dropdown_content.style.display = "block";
+        })
         listContainer.innerHTML = "";
 
         for (let i = 0; i < lines.length; i++) {
@@ -70,7 +76,7 @@ function addRow(listContainer, line){
 
 function updateBalance(){
     let balances = document.getElementsByClassName("balance");
-    let total = document.getElementById("db_subtotal_amount")
+    let total = document.getElementById("acc_subtotal_amount")
     let total_amount = 0.00;
     let amount = 0.00;
     for(let balance of balances){

@@ -26,7 +26,7 @@ function login(login_username, login_pw) {
                 sessionStorage.setItem(user_last, line[2]);
 
                 alert(`Welcome back to Wagner Bank, ${sessionStorage.getItem(user_first)} ${sessionStorage.getItem(user_last)}! \n` + sessionStorage.getItem(user_id));
-                window.location.assign("dashboard.html");
+                window.location.replace("dashboard.html");
                 return;
             }
         }

@@ -49,6 +49,10 @@ footer {
 
 
 /* 02 UTILITY CLASSES & DEVIATIONS FROM GENERIC STYLES - ALL PAGES */
+.hide {
+    display: none;
+}
+
 .background_dblue {
     background-color: #0b183d;
 }
@@ -434,6 +438,83 @@ footer {
     border-radius: 5px;
     margin-right: 20px;
     font-size: 13px;
-    
-
 }
+
+/* 06 SPECIFIC ELEMENTS - account.html */
+#acc_header_container{
+    display:flex;
+}
+
+#acc_header_right {
+    display: flex;
+    margin-right: 10px;
+    margin-left: auto;
+    align-items: center;
+    border-radius: 3px;
+}
+
+#acc_header_text {
+    display: flex;
+    align-self: center;
+}
+
+#acc_header_right_text {
+    color: lightgray;
+    padding-left: 20px;
+    padding-right: 10px;
+    font-size: 13px;
+}
+
+/* SAME COPY AS ABOVE (see README), just for the specific menu on account.html*/
+/* Dropdown button */
+.acc_dropdown .acc_dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+
+  .acc_dropbtn {
+    justify-self: right;
+    height: 40px;
+  }
+  
+  .acc_dropbtn:hover, .acc_dropdown:hover {
+    background-color: rgba(0,0,0,0.65); 
+  }
+
+  /* Dropdown content (hidden by default) */
+  .acc_dropdown-content {
+    display: none;
+    position:absolute;
+    right:10px;
+    background-color: rgba(0,0,0,0.45);
+    min-width: 30px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.25);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .acc_dropdown-content a {
+    float: none;
+    color: #ffd966;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: right;
+    
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .acc_dropdown-content a:hover {
+    background-color: #ffd966;
+    color: #0b183d;
+  }
+  
+  /* Show the dropdown menu on hover */
+
+/* END COPY FROM https://www.w3schools.com/ ------------------------ */
