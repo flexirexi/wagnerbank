@@ -111,7 +111,18 @@ footer {
     border-radius: 15px;
 }
 
-.listrow:hover, .listrow:active {
+.acc_listrow {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 95%;
+    min-width: 300px;
+    margin: 10px auto;
+    border-radius: 15px;
+}
+
+.listrow:hover, .listrow:active,
+.acc_listrow:hover, .acc_listrow:active {
     box-shadow: 5px 5px 5px rgba(0,0,0,0.45);
     transform: translate(0, 2px);
     cursor:pointer;
@@ -482,7 +493,8 @@ footer {
     justify-self: right;
     height: 40px;
   }
-  
+
+  /* tip: hover alone works well on a phone - the menu wont open on accidant -> solution, when display large use click instead of hover */
   .acc_dropbtn:hover, .acc_dropdown:hover {
     background-color: rgba(0,0,0,0.65); 
   }
@@ -514,7 +526,54 @@ footer {
     background-color: #ffd966;
     color: #0b183d;
   }
-  
-  /* Show the dropdown menu on hover */
 
 /* END COPY FROM https://www.w3schools.com/ ------------------------ */
+
+#acc_content_container {
+    display: flex;
+}
+
+#acc_left_container {
+    width: 67%;
+}
+
+#acc_right_container {
+    width: 33%;
+}
+
+#acc_right_container > * {
+    display: block;
+    width: 85%;
+    height: 20%;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 40px auto;
+}
+
+#acc_right_container > *:hover {
+    background-color: rgba(0,0,0,1);
+}
+
+#acc_send {
+    border-color: #ffd966;
+    margin-top: 60px;
+}
+
+#acc_table_container {
+    margin: 0 auto;
+    min-width: 250px;
+    max-height: 80%;
+    margin-top: 25px;
+    overflow-y: scroll;
+    overscroll-behavior: contain;
+}
+
+#acc_table_row_dummy {
+    display: none;
+}
+
+#acc_subtotal_container {
+    display: block;
+    text-align: right;
+    margin: 15px 10%;
+}

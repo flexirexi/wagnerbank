@@ -43,35 +43,47 @@
                         <i class="fa-solid fa-bars fa-xl" style="color: #ffd966"></i>
                     </button>
                     <div class="acc_dropdown-content">
-                      <a id="acc_send" href="#">Send Money...</a>
-                      <a id="acc_move" href="#">Move Money to another account</a>
-                      <a id="acc_info" href="#">Account Info</a>
+                        <a id="acc_send" href="#">Send Money...</a>
+                        <a id="acc_move" href="#">Move Money to another account</a>
+                        <a id="acc_info" href="#">Account Info</a>
                     </div>
                 </div>
             </div>
         </section>
         <div id="db_header_line" class="section_header_line background_yellow"></div>
         
-        <div id="db_table_container">
-            <div id="db_table_row_dummy" class="listrow background_lblue">
-                <div class="listitem_left textcolor_white" style="background-color: darkgray;">
-                </div>
-                <div class="listitem_middle" style="background-color: darkgray;">
-                    <div class="listitem_middle_top textcolor_white font_cinzel"></div>
-                    <div class="listitem_middle_bottom textcolor_white "> </div>
-                </div>
-                <div class="listitem_right"  style="background-color: darkgray;">
-                    <span class=" textcolor_white"></span>
-                    <span class=" textcolor_white"></span>
+
+        <div id="acc_content_container">
+            <div id="acc_left_container">
+                <section id="acc_subtotal_container" class="textcolor_yellow">
+                    <span id="acc_subtotal_text">As of 31/08/2024: </span>
+                    <span id="acc_subtotal_amount"></span>
+                    <span>EUR</span>
+                </section>
+                <div id="acc_table_container">
+                    <div id="acc_table_row_dummy" class="acc_listrow background_lblue">
+                        <div class="listitem_left textcolor_white" style="background-color: darkgray;">
+                        </div>
+                        <div class="listitem_middle" style="background-color: darkgray;">
+                            <div class="listitem_middle_top textcolor_white font_cinzel"></div>
+                            <div class="listitem_middle_bottom textcolor_white "> </div>
+                        </div>
+                        <div class="listitem_right"  style="background-color: darkgray;">
+                            <span class=" textcolor_white"></span>
+                            <span class=" textcolor_white"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div id="acc_right_container">
+                <button id="acc_send" class="background_black_transp font_cinzel textcolor_yellow">SEND MONEY...</button>
+                <button id="acc_move" class="background_black_transp font_cinzel textcolor_white">MOVE TO ANOTHER ACCOUNT</button>
+                <button id="acc_info" class="background_black_transp font_cinzel textcolor_white">ACCOUNT INFO</button>
+            </div>
+
+
         </div>
         
-        <section id="acc_subtotal_container" class="textcolor_yellow">
-            <span id="acc_subtotal_text">balance as of 31/08/2024</span>
-            <span id="acc_subtotal_amount"></span>
-            <span>EUR</span>
-        </section>
     </main>
     
     <footer>

@@ -1,4 +1,5 @@
 const user_id = "id", user_first = "user_firstname", user_last = "user_lastname";
+const acc_id = "account_id";
 
 document.addEventListener("DOMContentLoaded", function () {
     //alert(global_user.firstname + " " + global_user.lastname + ": " + global_user.id);
@@ -20,21 +21,21 @@ function addNameToNavBar() {
 }
 
 function fillWebsite() {
-    fetch("./assets/data/data_accounts.csv").then(response => response.text()).then(data => {
+    fetch("./assets/data/data_account_trnsx.csv").then(response => response.text()).then(data => {
         let lines = data.split("\n");
         let line;
-        let listContainer = document.getElementById("db_table_container");
+        let listContainer = document.getElementById("acc_table_container");
         let menu_btn = document.getElementsByClassName("acc_dropdown")[0];
+        
         menu_btn.addEventListener("click", function(){
-            
             let dropdown_content = document.getElementsByClassName("acc_dropdown-content")[0];
             dropdown_content.style.display == "block" ? dropdown_content.style.display = "none" : dropdown_content.style.display = "block";
         })
+        
         listContainer.innerHTML = "";
-
         for (let i = 0; i < lines.length; i++) {
             line = lines[i].split(";");
-            if (line[1] == sessionStorage.getItem(user_id)) {
+            if (line[1] == sessionStorage.getItem(acc_id)) {
                 addRow(listContainer, line);               
             }
         }
@@ -43,35 +44,21 @@ function fillWebsite() {
 }
 
 function addRow(listContainer, line){
-    let fontawesome = document.createElement("i");
-    
-    switch(line[3]) {
-        case "current account":
-            fontawesome.className = "fa-solid fa-building-columns fa-xl";
-            break;
-        case "savings account":
-            fontawesome.className = "fa-solid fa-piggy-bank fa-xl";
-            break;
-        case "credit card":
-            fontawesome.className = "fa-regular fa-credit-card fa-xl";
-            break;
-        default:
-    }
-    
-
     listContainer.innerHTML += `
-    <div class="listrow background_lblue">
-        <div class="listitem_left textcolor_white"> ${fontawesome.outerHTML} </div>
+    <div class="acc_listrow background_lblue">
+        <div class="listitem_left textcolor_white"> ${line[4].split(" ")[0]} </div>
         <div class="listitem_middle">
-            <div class="listitem_middle_top textcolor_white font_cinzel">${line[4]}</div>
-            <div class="listitem_middle_bottom textcolor_white ">${line[2]}</div>
+            <div class="listitem_middle_top textcolor_white font_cinzel">${line[8]}</div>
+            <div class="listitem_middle_bottom textcolor_white ">${line[9]}</div>
         </div>
         <div class="listitem_right">
-            <span class="balance textcolor_white">${new Intl.NumberFormat('no', {minimumFractionDigits: 2, maximumFractionDigits: 2,}).format(line[5])}</span>
+            <span class="balance textcolor_white">${new Intl.NumberFormat('no', {minimumFractionDigits: 2, maximumFractionDigits: 2,}).format(line[7])}</span>
             <span class=" textcolor_white">EUR</span>
         </div>
     </div>
     `;
+
+
 }
 
 function updateBalance(){
