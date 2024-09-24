@@ -89,6 +89,11 @@ footer {
     font-family: "Cinzel", sans-serif;
 }
 
+.no_wrap {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 /* small paddings - normal sized buttons, centralized, radius as listitems */
 .button_submit {
     padding: 5px 40px;
@@ -129,27 +134,45 @@ footer {
 }
 
 .listitem_left {
-    width: 80px;
-    text-align: center;
+    width: 50px;
+    min-width: 50px;
+    text-align: left;
+    margin-left: 5px;
+    font-size: 10px;
+    font-weight: bold;
 }
 
 .listitem_right {
-    width: 150px;
+    
     margin-left: auto;
     text-align: right;
     padding-right: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    
+}
+
+.listitem_middle {
+    width: 60%;
 }
 
 .listitem_middle_top {
+    width: 100%;
     margin-bottom: 3px;
     color: #ffd966;
-    font-size: 19px;
+    font-size: 15px;
+    text-align: left;
 }
 
 .listitem_middle_bottom {
-    font-size: 12px;
+    width: 100%;
+    font-size: 10px;
     margin-bottom: 3px;
     padding-left: 3px;
+}
+
+.balance {
+    min-width: 60px;
 }
 
 /* for the divs in the two action pages - less radius/vertical margin but much dynamic&more horizontal margin*/
@@ -531,14 +554,24 @@ footer {
 
 #acc_content_container {
     display: flex;
+    position: absolute;
+    left:0;
+    top:70px;
+    right:0;
+    bottom:0;
+
 }
 
 #acc_left_container {
     width: 67%;
+    height: 100%;
+    margin:0;
 }
 
 #acc_right_container {
     width: 33%;
+    height: 100%;
+    margin: 0;
 }
 
 #acc_right_container > * {
@@ -562,8 +595,8 @@ footer {
 #acc_table_container {
     margin: 0 auto;
     min-width: 250px;
-    max-height: 80%;
-    margin-top: 25px;
+    max-height: 90%;
+    margin-top: 15px;
     overflow-y: scroll;
     overscroll-behavior: contain;
 }
@@ -576,4 +609,16 @@ footer {
     display: block;
     text-align: right;
     margin: 15px 10%;
+    font-size: 20px;
+}
+
+#acc_subtotal_text, 
+#acc_subtotal_cur {
+    font-size: 12px;
+}
+
+#acc_subtotal_amount {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 25px;
 }
