@@ -4,11 +4,17 @@ const acc_id = "account_id";
 document.addEventListener("DOMContentLoaded", function () {
     //alert(global_user.firstname + " " + global_user.lastname + ": " + global_user.id);
     let logout = document.getElementById("logout");
+    let send = document.getElementById("acc_send");
     logout.addEventListener("click", logout_user);
+    send.addEventListener("click", loadSend);
     startCountdown()
     addNameToNavBar();
     fillWebsite();
 })
+
+function loadSend(){
+    window.location.replace("send.html");
+}
 
 function logout_user(){
     sessionStorage.clear;
