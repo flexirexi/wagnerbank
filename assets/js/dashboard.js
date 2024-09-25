@@ -57,12 +57,12 @@ function addRow(listContainer, line){
     <div class="listrow background_lblue">
         <div class="listitem_left textcolor_white"> ${fontawesome.outerHTML} </div>
         <div class="listitem_middle">
-            <div class="listitem_middle_top textcolor_white font_cinzel">${line[4]}</div>
-            <div class="listitem_middle_bottom textcolor_white ">${line[2]}</div>
+            <div class="listitem_middle_top textcolor_white font_cinzel no_wrap">${line[4]}</div>
+            <div class="listitem_middle_bottom textcolor_white no_wrap ">${line[2]}</div>
         </div>
         <div class="listitem_right">
-            <span class="balance textcolor_white">${new Intl.NumberFormat('no', {minimumFractionDigits: 2, maximumFractionDigits: 2,}).format(line[5])}</span>
-            <span class=" textcolor_white">EUR</span>
+            <span class="balance textcolor_white no_wrap">${new Intl.NumberFormat('no', {minimumFractionDigits: 2, maximumFractionDigits: 2,}).format(line[5])}</span>
+            <span class=" textcolor_white" style="color: lightgray; font-size: 9px;">EUR</span>
         </div>
         <div class="hide account_id">${line[0]}</div>
     </div>

@@ -50,13 +50,13 @@ function addRow(listContainer, line){
     if(line[7]==""){return;}
     listContainer.innerHTML += `
     <div class="acc_listrow background_lblue">
-        <div class="listitem_left textcolor_white"> ${line[4].split(" ")[1].slice(5,7)+"/"+line[4].split(" ")[1].slice(8,10)} </div>
-        <div class="listitem_middle">
-            <div class="listitem_middle_top no_wrap textcolor_white font_cinzel">${line[8]}</div>
-            <div class="listitem_middle_bottom no_wrap textcolor_white ">${line[9]}</div>
+        <div class="acc_listitem_left textcolor_white"> ${line[4].split(" ")[1].slice(5,7)+"/"+line[4].split(" ")[1].slice(8,10)} </div>
+        <div class="acc_listitem_middle">
+            <div class="acc_listitem_middle_top no_wrap textcolor_white font_cinzelc">${line[8]}</div>
+            <div class="acc_listitem_middle_bottom no_wrap textcolor_white no_wrap ">${line[9]}</div>
         </div>
-        <div class="listitem_right">
-            <span class="balance textcolor_white">${new Intl.NumberFormat('no', {minimumFractionDigits: 2, maximumFractionDigits: 2,}).format(line[7])}</span>
+        <div class="acc_listitem_right">
+            <span class="balance textcolor_white no_wrap">${new Intl.NumberFormat('no', {minimumFractionDigits: 2, maximumFractionDigits: 2,}).format(line[7])}</span>
             
         </div>
     </div>
@@ -66,7 +66,7 @@ function addRow(listContainer, line){
 function updateBalance(line){
     let balance = document.getElementById("acc_subtotal_amount");
     if(balance.innerHTML==""){
-        balance.innerHTML = line[10];
+        balance.innerHTML = new Intl.NumberFormat('no', {minimumFractionDigits: 2, maximumFractionDigits: 2,}).format(line[10]);
     }
 }
 

@@ -14,10 +14,14 @@
 
 <body id="db_body" class="body background_dblue">
     <header id="nav_bar">
-        <div id="nav_bar_left"></div>
-        <div id="nav_bar_middle">
+        <div id="nav_bar_left">
+            <button id="nav_bar_left_btn" class="background_black_transp textcolor_white" onclick="history.back()">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
+        <div id="nav_bar_middle" class="hide_when_mobile">
             <div>
-                <img src="assets/favicon/logo_white.png" alt="company logo" width="120px" srcset="">
+                <img src="assets/favicon/logo_white.png" alt="company logo" width="110px" srcset="">
             </div>
         </div>
         <div id="nav_bar_right">
@@ -62,7 +66,7 @@
                 </section>
                 <div id="acc_table_container">
                     <div id="acc_table_row_dummy" class="acc_listrow background_lblue">
-                        <div class="listitem_left textcolor_white" style="background-color: darkgray;">
+                        <div class="acc_listitem_left textcolor_white" style="background-color: darkgray;">
                         </div>
                         <div class="listitem_middle" style="background-color: darkgray;">
                             <div class="listitem_middle_top textcolor_white font_cinzel"></div>
