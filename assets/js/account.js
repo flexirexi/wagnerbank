@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let send = document.getElementById("acc_send");
     logout.addEventListener("click", logout_user);
     send.addEventListener("click", loadSend);
-    startCountdown()
+    startCountdown();
     addNameToNavBar();
     fillWebsite();
 })
