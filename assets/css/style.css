@@ -586,6 +586,7 @@ footer {
 /* SAME COPY AS ABOVE (see README), just for the specific menu on account.html*/
 /* Dropdown button */
 .acc_dropdown .acc_dropbtn {
+    display: block;
     font-size: 16px;
     border: none;
     outline: none;
@@ -766,5 +767,17 @@ footer {
         height: 100%;
         margin: 0;
     }
+
+    .acc_dropdown .acc_dropbtn {
+        display: none;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit; /* Important for vertical align on mobile phones */
+        margin: 0; /* Important for vertical align on mobile phones */
+      }
 
 } 
