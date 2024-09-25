@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Dashboard</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon/logo_square.png">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body id="db_body" class="body background_dblue">
+    <header id="nav_bar">
+        <div id="nav_bar_left"></div>
+        <div id="nav_bar_middle">
+            <div>
+                <img src="assets/favicon/logo_white.png" alt="company logo" width="110px" srcset="">
+            </div>
+        </div>
+        <div id="nav_bar_right">
+            <span id="nav_bar_right_text">HALLO</span>
+            <div class="dropdown">
+                <button class="dropbtn">
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a id="logout" href="#">logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="db_header_container" class="section_header">
+            <h1 id="db_header_text" class="section_header_text textcolor_yellow font_cinzel">Send Money</h1>
+            <div id="db_header_line" class="section_header_line background_yellow"></div>
+        </section>
+
+        <form id="send_form">
+            <div id="send_sender_container" class="listrow background_lblue">
+                <div id="send_sender_label" class="textcolor_white" >Sending Account: 
+                </div>
+                <div id="send_sender_image_container" class="textcolor_white" >
+                </div>
+                <div id="send_sender_text_container" class="textcolor_white">
+                    <div id="send_sender_text1" class="textcolor_yellow font_cinzel no_wrap"></div>
+                    <div id="send_sender_text2" class="textcolor_white  no_wrap"> </div>
+                </div>
+                <div id="send_sender_id" class="hide"></div>
+            </div>
+
+            <div id="send_receiver_container" class="listrow background_lblue">
+                <div id="send_receiver_label" class="textcolor_white" >
+                </div>
+                <div id="send_reveiver_container" class="textcolor_white" >
+                </div>
+                <div id="send_receiver_id" class="hide"></div>
+            </div>
+
+            <div id="send_amount_container" class="listrow background_lblue">
+                <div id="send_amount_text" class="textcolor_white" >Amount: 
+                </div>
+                <div id="send_amount_container" class="textcolor_white" >
+                </div>
+            </div>
+
+            <div id="send_ref_container" class="listrow background_lblue">
+                <div id="send_ref_label" class="textcolor_white" >Reference: 
+                </div>
+                <div id="send_ref_container" class="textcolor_white" >
+                </div>
+            </div>
+
+            <div id="send_submit" class="listrow background_lblue">
+            </div>
+
+        </form>
+    </main>
+    
+    <footer>
+        <div id="footer_timer" class="background_black_transp textcolor_white">logout in:  <span id="footer_timer_text">##:##</span></div>
+    </footer>
+
+    <div id="timer_msgbox_container">
+        <div id="timer_msgbox" class="textcolor_white">
+            <div>You will be logged out in <br>(confirm to continue):</div>
+            <span id="timer_msgbox_text">00:00</span>
+            <button id="timer_msgbox_btn" class="background_dblue textcolor_yellow font_cinzel">confirm</button>
+        </div>
+    </div>
+    
+    <script type="module" src="assets/js/dashboard.js"></script>
+    <script src="https://kit.fontawesome.com/ee874b1d34.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
