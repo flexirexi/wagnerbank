@@ -5,8 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
     //alert(global_user.firstname + " " + global_user.lastname + ": " + global_user.id);
     let logout = document.getElementById("logout");
     let send = document.getElementById("acc_send");
+    let send2 = document.getElementById("acc_send_btn");
     logout.addEventListener("click", logout_user);
     send.addEventListener("click", loadSend);
+    send2.addEventListener("click", loadSend);
     startCountdown();
     addNameToNavBar();
     fillWebsite();
