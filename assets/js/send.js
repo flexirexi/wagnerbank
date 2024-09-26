@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let logout = document.getElementById("logout");
     let send_form = document.getElementById("send_form");
     let send_receiver_dropdown = document.getElementById("send_receiver_dropdown");
-
+    let obj_sender_id = document.getElementById("send_sender_id");
+    
+    obj_sender_id.innerHTML = sessionStorage.getItem(acc_id);
     setupDropdown(send_receiver_dropdown);
     send_form.addEventListener("submit", submit);
     logout.addEventListener("click", logout_user);
@@ -38,44 +40,51 @@ function setupDropdown(send_receiver_dropdown) {
     fetch("./assets/data/data_accounts.csv").then(response => response.text()).then(data => {
         let lines = data.split("\n");
         let line;
+        let receivers = {};
 
         for (let i = 0; i < lines.length; i++) {
             line = lines[i].split(";");
             if (line[1] == sessionStorage.getItem(user_id) &&
                 line[3] != "credit card") {
-                    send_receiver_dropdown.innerHTML += `<option class="option" value="${line[1]}">${line[4]} [${line[2]}]: \n ${line[5]} €</option>`
+                    send_receiver_dropdown.innerHTML += `<option class="option" value="${line[0]}">${line[4]} [${line[2]}]: \n ${line[5]} €</option>`
+                    receivers[line[0]] = line[2];
             }
         }
+
+        send_receiver_dropdown.addEventListener("change", function(){
+            document.getElementById("send_receiver_id").innerHTML = this.value;
+            document.getElementById("send_receiver_name").innerHTML = receivers[this.value];
+        })
     });
 }
 
 function submit(event){
-    let sender, sender_id, receiver_intern, receiver_intern_id, receiver_extern, amount, ref;
-    let obj_sender_id = document.getElementById("send_sender_id");
+    let sender, sender_id, receiver, receiver_id, amount, ref;
     let obj_sender = document.getElementById("send_sender_image_top");
     event.preventDefault();
 
     //getConfirmation();
     sender = obj_sender.innerHTML;
-    sender_id = obj_sender_id.innerHTML;
+    sender_id = sessionStorage.getItem(acc_id);
     if(sessionStorage.getItem(action)=="move"){
-        receiver_intern = document.getElementById("send_receiver_dropdown").value;
-        receiver_intern_id = document.getElementById("send_receiver_id").innerHTML;
-        receiver_extern = "";
+        receiver = document.getElementById("send_receiver_name").innerHTML;
+        receiver_id = document.getElementById("send_receiver_id").innerHTML;
+        
     } else {
-        receiver_extern = document.getElementById("send_receiver2_input").value;
-        receiver_intern = "";
-        receiver_intern_id = "";
+        
+        receiver = document.getElementById("send_receiver2_input").value;
+        receiver_id = "";
     }
     amount = document.getElementById("send_amount_input").value;
     ref = document.getElementById("send_ref_input").value;
-    alert(sender_id + " " + receiver_intern + " extern: " + receiver_extern + " " + amount + " " + ref);
+    alert("SEND: " + sender_id + ", " + receiver + ", " + amount + ", " + ref);
 
-    let send_result = addTransaction(sender_id, receiver_ext, amount, ref); //+account balance in data_accounts
+    //let send_result = addTransaction(sender_id, receiver, amount, ref); //+account balance in data_accounts
     if(sessionStorage.getItem(action)=="move"){
-        let move_result = addTransaction(receiver_intern_id, sender, amount*-1, ref); //+account balance in data_accounts
+        alert("MOVE: " + receiver_id + ", " + sender + ", " + amount + ", " + ref);
+        //let move_result = addTransaction(receiver_id, sender, amount*-1, ref); //+account balance in data_accounts
     }
-    sucessMessage(send_result, move_result);
+    //sucessMessage(send_result, move_result);
 }
 
 function logout_user(){
