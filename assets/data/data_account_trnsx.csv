@@ -1,6 +1,6 @@
 trnsx id;account_id;user_id;account_kind;date;random uhrzeit;day;transaction;reference;External account number; balance ;
 100064;2001;1001;current account; 2024-09-09 07:58;07:58:44;Mo;-11.99;Papeterie pencil shop;DE99 3397 2911 5673 781 99;-274.71;
-100063;2001;1001;current account; 2024-09-06 04:17;04:17:38;Fr;-75.00;savings plan;;-262.72;
+100063;2001;1001;current account; 2024-09-20 04:17;04:17:38;Fr;-75.00;savings plan;;-262.72;
 100062;2001;1001;current account; 2024-09-05 21:19;21:19:01;Do;-250.00;savings plan;;-187.72;
 100061;2001;1001;current account; 2024-09-04 08:23;08:23:17;Mi;76.51;moneyCollector: your friends reached your goal;DE99 4564 7578 4246 5951 99;62.28;
 100060;2001;1001;current account; 2024-09-03 22:40;22:40:03;Di;85.39;MyPart of the Rent;DE99 2212 2305 4785 9692 99;-14.24;
@@ -487,4 +487,3 @@ trnsx id;account_id;user_id;account_kind;date;random uhrzeit;day;transaction;ref
 100488;2013;1005;savings account; 2024-09-05 12:00;12:00:00;Do;120.00;savings plan;;6945;
 100487;2013;1005;savings account; 2024-08-05 12:00;12:00:00;Mo;120.00;savings plan;;6825;
 100486;2013;1005;savings account; 2024-07-05 12:00;12:00:00;Fr;120.00;savings plan;;6705;
-;

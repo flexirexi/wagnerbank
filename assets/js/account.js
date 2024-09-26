@@ -51,19 +51,19 @@ function fillWebsite() {
     if(sessionStorage.getItem("data")==null) {
         fetch("./assets/data/data_account_trnsx.csv").then(response => response.text()).then(data => {
             sessionStorage.setItem("data", data);
+            //console.log(sessionStorage.getItem("data"));
+            //console.log(data);
              fillList(data);
-             alert("fetched successful");
         });
     } else {
         fillList(sessionStorage.getItem("data"));
-        alert("sessionStorage data loaded successful");
     }
 }
 
 function fillList(data){
     let lines = data.split("\n");
     lines = lines.sort((a,b) => new Date(b[4]) - new Date(a[4]));
-
+    console.log(lines[4][4]);
     let line;
     let listContainer = document.getElementById("acc_table_container");
     let menu_btn = document.getElementsByClassName("acc_dropdown")[0];

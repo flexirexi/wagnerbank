@@ -87,45 +87,13 @@ function submit(event){
     //sucessMessage(send_result, move_result);
 }
 
-async function addTransaction(acc_id, acc_ext, amount, ref) {
-    // COPY and modified from https://dev.to/tienbku/javascript-fetch-getpostputdelete-example-3dmp ------- >
-    const options = {
-        method: "get",
-        headers: {
-            "Content-Type": "text/csv",
-        }
-    };
+function addTransaction(acc_id, acc_ext, amount, ref) {
+    let data = sessionStorage.getItem("data");
+    let lines = data.split("\n");
     
-        const response = await fetch("./assets/data/data_account_trnsx.csv", options);
-        if(!response.ok) {
-            const message = "Error with status code " + response.status;
-            throw new Error(message); 
-        }
-        let data = await response.text();
-        console.log(data);
-
-        data += "\n" + "haahhahahahahahahahahahahahahaha";
-        sessionStorage.setItem("data", data);
-        return;
-        const options_update = {
-            method: "post",
-            headers: {
-                "Content-Type": "text/csv",
-                "Cache-Control": "no-cache"
-            },
-            body: data
-        };
-        const response_update = await fetch("./assets/data/data_account_trnsx_copy.csv", options_update);
-        if(!response_update.ok) {
-            const message_update = "Writing Error with status code " + response_update.status;
-            throw new Error(message_update);
-        }
-        console.log("updated successfully");
-    
-    //END COPY from dev.to -> way more "elegant" than my previous fetch solutions... ---------------------->
-
-    
-
+    lines = lines.sort((a,b) => b[7] - a[7]);
+    console.log(lines);
+    //100486;2013;1005;savings account; 2024-07-05 12:00;12:00:00;Fr;120.00;savings plan;;6705;
 
 }
 
