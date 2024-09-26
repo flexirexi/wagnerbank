@@ -40,6 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
     addNameToNavBar();
 })
 
+function loadPreviousPage(){
+    window.location.assign("account.html");
+}
+
 function setupDropdown(send_receiver_dropdown) {
     fetch("./assets/data/data_accounts.csv").then(response => response.text()).then(data => {
         let lines = data.split("\n");
@@ -187,6 +191,7 @@ function logout_user(){
     sessionStorage.clear();
     window.location.replace("index.html");
 }
+
 
 function addNameToNavBar() {
     let span = document.getElementById("nav_bar_right_text");

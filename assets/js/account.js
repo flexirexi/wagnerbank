@@ -47,6 +47,10 @@ function addNameToNavBar() {
     span.innerHTML = `Hello, ${sessionStorage.getItem(user_first)} ${sessionStorage.getItem(user_last)}!`;
 }
 
+function loadPreviousPage(){
+    window.location.assign("dashboard.html");
+}
+
 function fillWebsite() {
     if(sessionStorage.getItem("data")==null) {
         fetch("./assets/data/data_account_trnsx.csv").then(response => response.text()).then(data => {
