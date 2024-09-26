@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let move_input = document.getElementById("send_receiver_dropdown");
     let send_input = document.getElementById("send_receiver2_input");
     let logout = document.getElementById("logout");
+    let send_form = document.getElementById("send_form");
     
+   // send_form.addEventListener("submit", submit);
     logout.addEventListener("click", logout_user);
     if(sessionStorage.getItem(action)=="move") {
         move_container.style.display = "flex";
@@ -29,6 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
     startCountdown();
     addNameToNavBar();
 })
+
+function submit(){
+    
+    getConfirmation();
+    addTransaction(); //+account balance in data_accounts
+    if(sessionStorage.getItem(action)=="move"){
+        addMovement(); //+account balance in data_accounts
+    }
+    sucessMessage();
+}
 
 function logout_user(){
     sessionStorage.clear;

@@ -8,15 +8,18 @@ document.addEventListener("DOMContentLoaded", function () {
     let send = document.getElementById("acc_send");
     let send2 = document.getElementById("acc_send_btn");
     let move = document.getElementById("acc_move_btn");
+    let move2 = document.getElementById("acc_move");
     logout.addEventListener("click", logout_user);
     if(sessionStorage.getItem(acc_kind)=="credit card"){
         send.style.display="none";
         send2.style.display="none";
-        move.style.display="none"
+        move.style.display="none";
+        move2.style.display="none";
     } else {
         send.addEventListener("click", loadSend);
         send2.addEventListener("click", loadSend);
         move.addEventListener("click", loadMove);
+        move2.addEventListener("click", loadMove);
     }
     startCountdown();
     addNameToNavBar();
