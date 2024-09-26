@@ -1,5 +1,5 @@
 const user_id = "id", user_first = "user_firstname", user_last = "user_lastname";
-const acc_id = "account_id", acc_kind = "account_kind";
+const acc_id = "account_id", acc_kind = "account_kind", acc_name = "account_name", acc_number = "account_number";
 const action="action";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -11,8 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let send_form = document.getElementById("send_form");
     let send_receiver_dropdown = document.getElementById("send_receiver_dropdown");
     let obj_sender_id = document.getElementById("send_sender_id");
-    
+    let obj_sender_name = document.getElementById("send_sender_image_top");
+    let obj_sender_acc_number = document.getElementById("send_sender_image_bottom");
+
     obj_sender_id.innerHTML = sessionStorage.getItem(acc_id);
+    obj_sender_name.innerHTML = sessionStorage.getItem(acc_name);
+    obj_sender_acc_number.innerHTML = sessionStorage.getItem(acc_number);
     setupDropdown(send_receiver_dropdown);
     send_form.addEventListener("submit", submit);
     logout.addEventListener("click", logout_user);
@@ -46,55 +50,117 @@ function setupDropdown(send_receiver_dropdown) {
             line = lines[i].split(";");
             if (line[1] == sessionStorage.getItem(user_id) &&
                 line[3] != "credit card") {
-                    send_receiver_dropdown.innerHTML += `<option class="option" value="${line[0]}">${line[4]} [${line[2]}]: \n ${line[5]} €</option>`
-                    receivers[line[0]] = line[2];
+                    send_receiver_dropdown.innerHTML += `<option class="option" value="${line[0]}">${line[4]} [${line[0]}] [${line[2]}]: \n ${line[5]} €</option>`
+                    receivers[line[0]] = [line[2],line[3]];
             }
         }
 
         send_receiver_dropdown.addEventListener("change", function(){
             document.getElementById("send_receiver_id").innerHTML = this.value;
-            document.getElementById("send_receiver_name").innerHTML = receivers[this.value];
+            document.getElementById("send_receiver_name").innerHTML = receivers[this.value][0];
+            document.getElementById("send_receiver_kind").innerHTML = receivers[this.value][1];
         })
     });
 }
 
 function submit(event){
-    let sender, sender_id, receiver, receiver_id, amount, ref;
-    let obj_sender = document.getElementById("send_sender_image_top");
     event.preventDefault();
-
+    let sender, sender_id, receiver, receiver_id, receiver_kind, amount, ref;
+    let obj_sender = document.getElementById("send_sender_image_top");
+    
     //getConfirmation();
     sender = obj_sender.innerHTML;
     sender_id = sessionStorage.getItem(acc_id);
     if(sessionStorage.getItem(action)=="move"){
         receiver = document.getElementById("send_receiver_name").innerHTML;
         receiver_id = document.getElementById("send_receiver_id").innerHTML;
-        
+        receiver_kind = document.getElementById("send_receiver_kind").innerHTML;
     } else {
         
         receiver = document.getElementById("send_receiver2_input").value;
         receiver_id = "";
     }
-    amount = document.getElementById("send_amount_input").value;
+    amount = Number(document.getElementById("send_amount_input").value) * -1;
     ref = document.getElementById("send_ref_input").value;
-    alert("SEND: " + sender_id + ", " + receiver + ", " + amount + ", " + ref);
-
-    let send_result = addTransaction(sender_id, receiver, amount, ref); //+account balance in data_accounts
-    if(sessionStorage.getItem(action)=="move"){
-        alert("MOVE: " + receiver_id + ", " + sender + ", " + amount + ", " + ref);
-        let move_result = addTransaction(receiver_id, sender, amount*-1, ref); //+account balance in data_accounts
+    if(!confirm("Please CHECK and CONFIRM: \n\nSender: " + sender + "\nReceiver: " + receiver + "\nAmount: " + amount*-1 + "\nReference: " + ref)) {
+        return;
     }
-    //sucessMessage(send_result, move_result);
+    //alert("SEND: " + sender_id + ", " + receiver + ", " + amount + ", " + ref);
+
+    addTransaction(sender_id, receiver, amount, ref, sessionStorage.getItem(acc_kind)); //+account balance in data_accounts
+    if(sessionStorage.getItem(action)=="move"){
+        amount *= -1;
+        //alert("MOVE: " + receiver_id + ", " + sender + ", " + amount + ", " + ref);
+        addTransaction(receiver_id, sender, amount, ref, receiver_kind); //+account balance in data_accounts
+    }
+    successMessage();
 }
 
-function addTransaction(acc_id, acc_ext, amount, ref) {
-    let data = sessionStorage.getItem("data");
-    let lines = data.split("\n");
+function successMessage() {
     
-    lines = lines.sort((a,b) => b[7] - a[7]);
-    console.log(lines);
-    //100486;2013;1005;savings account; 2024-07-05 12:00;12:00:00;Fr;120.00;savings plan;;6705;
+}
 
+function addTransaction(account_id, acc_ext, amount, ref, account_kind) {
+    //was wir brauchen: trnsx_id, datum, zeit, balance as of today
+    let trnsx_id = createTrnsxID();
+    let trnsx_date = new Date();
+    let trnsx_time = trnsx_date.getTime();
+    let balance = newBalance(account_id, amount);
+    
+
+    let data = sessionStorage.getItem("data");
+    let row = `\r\n${trnsx_id};${account_id};${sessionStorage.getItem("id")};${account_kind};${trnsx_date};${trnsx_time};;${amount};${ref};${acc_ext};${balance};`
+    data += row;
+    sessionStorage.setItem("data", data);
+    console.log(row);
+    //100486;2013;1005;savings account; 2024-07-05 12:00;12:00:00;Fr;120.00;savings plan;;6705;
+}
+
+function newBalance(account_id, amount){
+    let lines = readData("date_account", account_id);
+    let balance = Number(lines[0][10]) + amount;
+    balance = balance.toFixed(2);
+    console.log("newBalance: " + lines[0][10] + " + " + amount + " = " + balance);
+    return balance;
+}
+
+function createTrnsxID(){
+    let lines = readData("trnsx_id");
+    let trnsx_id = parseInt(lines[1][0]) + 1;
+    return trnsx_id;
+}
+
+function readData(filter, account_id){
+    let lines = [];
+    lines = sessionStorage.getItem("data").split("\r\n");
+
+
+    if(filter=="date_account"){
+        console.log("----- filter by date -----");
+        let lines_helper = lines;
+        lines = [];
+        for(let i=0; i<lines_helper.length; i++) {
+            
+            if(lines_helper[i].split(";")[1]==account_id) { 
+                lines[lines.length] = lines_helper[i].split(";");
+            }
+        }
+        lines = lines.sort((a,b) => new Date(b[4]) - new Date(a[4]));
+        lines_helper = [];
+        for(let i=0;i<4;i++){
+            console.log(lines[i]);
+        }
+    } else if(filter=="trnsx_id"){
+        console.log("----- filter by trnsx ID -----");
+        for(let i=0; i<lines.length; i++) {
+            lines[i] = lines[i].split(";");
+            if(i<4){console.log(lines[i]);}
+        }
+        console.log(typeof lines);
+        lines = lines.sort((a,b) => b[0] - a[0]);
+
+    }
+    return lines;
 }
 
 function logout_user(){

@@ -1,5 +1,5 @@
 const user_id = "id", user_first = "user_firstname", user_last = "user_lastname";
-const acc_id = "account_id", acc_kind = "account_kind";
+const acc_id = "account_id", acc_kind = "account_kind", acc_name = "account_name", acc_number = "account_number";
 const action="action";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -61,12 +61,16 @@ function fillWebsite() {
 }
 
 function fillList(data){
-    let lines = data.split("\n");
-    lines = lines.sort((a,b) => new Date(b[4]) - new Date(a[4]));
-    console.log(lines[4][4]);
-    let line;
     let listContainer = document.getElementById("acc_table_container");
     let menu_btn = document.getElementsByClassName("acc_dropdown")[0];
+    let lines = [];
+
+    lines = data.split("\r\n");
+    for(let i=0; i<lines.length; i++) {
+        lines[i] = lines[i].split(";");
+    }
+    lines = lines.sort((a,b) => new Date(b[4]) - new Date(a[4]));
+
     
     menu_btn.addEventListener("click", function(){
         let dropdown_content = document.getElementsByClassName("acc_dropdown-content")[0];
@@ -75,12 +79,10 @@ function fillList(data){
     
     listContainer.innerHTML = "";
     for (let i = 1; i < lines.length; i++) {
-        line = lines[i].split(";");
-        if (i==1){
-            
-        } else if (line[1] == sessionStorage.getItem(acc_id)) {
-            updateBalance(line);
-            addRow(listContainer, line);               
+        if (i==0){
+        } else if (lines[i][1] == sessionStorage.getItem(acc_id)) {
+            updateBalance(lines[i]);
+            addRow(listContainer, lines[i]);               
         }
     }
    

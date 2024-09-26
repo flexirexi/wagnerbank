@@ -1,5 +1,5 @@
 const user_id = "id", user_first = "user_firstname", user_last = "user_lastname";
-const acc_id = "account_id", acc_kind = "account_kind";
+const acc_id = "account_id", acc_kind = "account_kind", acc_name = "account_name", acc_number = "account_number";
 
 document.addEventListener("DOMContentLoaded", function () {
     //alert(global_user.firstname + " " + global_user.lastname + ": " + global_user.id);
@@ -71,12 +71,19 @@ function addRow(listContainer, line){
     let listrows = document.getElementsByClassName("listrow");
     let acc_selected;
     let acc_selected_kind;
+    let acc_selected_name;
+    let acc_selected_number;
     for(let listrow of listrows) {
         listrow.addEventListener("click", function(){
             acc_selected = this.getElementsByClassName("account_id")[0].innerHTML;
             acc_selected_kind = this.getElementsByClassName("account_kind")[0].innerHTML;
+            acc_selected_name = this.getElementsByClassName("listitem_middle_top")[0].innerHTML;
+            acc_selected_number = this.getElementsByClassName("listitem_middle_bottom")[0].innerHTML;
             sessionStorage.setItem(acc_id, acc_selected);
             sessionStorage.setItem(acc_kind, acc_selected_kind);
+            sessionStorage.setItem(acc_name, acc_selected_name);
+            sessionStorage.setItem(acc_number, acc_selected_number);
+            console.log(acc_selected, acc_selected_kind, acc_selected_name, acc_selected_number);
             window.location.assign("account.html");
         })
     }
