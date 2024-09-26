@@ -37,8 +37,9 @@ function loadSend(){
 }
 
 function logout_user(){
-    sessionStorage.clear;
+    sessionStorage.clear();
     window.location.replace("index.html");
+    alert("clear sessionstorage");
 }
 
 function addNameToNavBar() {
@@ -47,32 +48,42 @@ function addNameToNavBar() {
 }
 
 function fillWebsite() {
-    fetch("./assets/data/data_account_trnsx.csv").then(response => response.text()).then(data => {
-        let lines = data.split("\n");
-        lines = lines.sort((a,b) => new Date(b[4]) - new Date(a[4]));
-        sessionStorage.setItem("data",data);
-        console.log(data);
-        let line;
-        let listContainer = document.getElementById("acc_table_container");
-        let menu_btn = document.getElementsByClassName("acc_dropdown")[0];
-        
-        menu_btn.addEventListener("click", function(){
-            let dropdown_content = document.getElementsByClassName("acc_dropdown-content")[0];
-            dropdown_content.style.display == "block" ? dropdown_content.style.display = "none" : dropdown_content.style.display = "block";
-        })
-        
-        listContainer.innerHTML = "";
-        for (let i = 1; i < lines.length; i++) {
-            line = lines[i].split(";");
-            if (i==1){
-                
-            } else if (line[1] == sessionStorage.getItem(acc_id)) {
-                updateBalance(line);
-                addRow(listContainer, line);               
-            }
+    if(sessionStorage.getItem("data")==null) {
+        fetch("./assets/data/data_account_trnsx.csv").then(response => response.text()).then(data => {
+            sessionStorage.setItem("data", data);
+             fillList(data);
+             alert("fetched successful");
+        });
+    } else {
+        fillList(sessionStorage.getItem("data"));
+        alert("sessionStorage data loaded successful");
+    }
+}
+
+function fillList(data){
+    let lines = data.split("\n");
+    lines = lines.sort((a,b) => new Date(b[4]) - new Date(a[4]));
+
+    let line;
+    let listContainer = document.getElementById("acc_table_container");
+    let menu_btn = document.getElementsByClassName("acc_dropdown")[0];
+    
+    menu_btn.addEventListener("click", function(){
+        let dropdown_content = document.getElementsByClassName("acc_dropdown-content")[0];
+        dropdown_content.style.display == "block" ? dropdown_content.style.display = "none" : dropdown_content.style.display = "block";
+    })
+    
+    listContainer.innerHTML = "";
+    for (let i = 1; i < lines.length; i++) {
+        line = lines[i].split(";");
+        if (i==1){
+            
+        } else if (line[1] == sessionStorage.getItem(acc_id)) {
+            updateBalance(line);
+            addRow(listContainer, line);               
         }
-        
-    });
+    }
+   
 }
 
 function addRow(listContainer, line){

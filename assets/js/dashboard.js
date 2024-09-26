@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 function logout_user(){
-    sessionStorage.clear;
+    sessionStorage.clear();
     window.location.replace("index.html");
 }
 

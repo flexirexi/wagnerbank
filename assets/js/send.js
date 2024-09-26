@@ -130,7 +130,7 @@ async function addTransaction(acc_id, acc_ext, amount, ref) {
 }
 
 function logout_user(){
-    sessionStorage.clear;
+    sessionStorage.clear();
     window.location.replace("index.html");
 }
 
