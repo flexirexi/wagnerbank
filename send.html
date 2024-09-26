@@ -43,11 +43,18 @@
             <div id="db_header_line" class="section_header_line background_yellow"></div>
         </section>
 
-        <form id="send_form">
-            <div id="send_sender_container" class="listrow background_lblue">
-                <div id="send_sender_label" class="textcolor_white" >Sending Account: 
+        <form id="send_form" action="">
+            <div id="send_sender_container" class="send_listrow background_lblue">
+                <div id="send_sender_label" class="textcolor_white" >Sender: 
                 </div>
-                <div id="send_sender_image_container" class="textcolor_white" >
+                <div id="send_sender_image_container" class="textcolor_white " >
+                    <div id="send_sender_image" class="textcolor_white">
+                        <i class="fa-solid fa-building-columns fa-2xl"></i>
+                    </div>
+                    <div id="send_sender_image_texts" class="">
+                        <div id="send_sender_image_top" class=" textcolor_yellow font_cinzel no_wrap">Account Name</div>
+                        <div id="send_sender_image_bottom" class="no_wrap">DE10 1234 5678 1234 5678 10</div>
+                    </div>
                 </div>
                 <div id="send_sender_text_container" class="textcolor_white">
                     <div id="send_sender_text1" class="textcolor_yellow font_cinzel no_wrap"></div>
@@ -56,29 +63,45 @@
                 <div id="send_sender_id" class="hide"></div>
             </div>
 
-            <div id="send_receiver_container" class="listrow background_lblue">
-                <div id="send_receiver_label" class="textcolor_white" >
+            <div id="send_receiver_container" class="send_listrow background_lblue">
+                <div id="send_receiver_label" class="textcolor_white" >Receiver: 
                 </div>
-                <div id="send_reveiver_container" class="textcolor_white" >
-                </div>
-                <div id="send_receiver_id" class="hide"></div>
-            </div>
-
-            <div id="send_amount_container" class="listrow background_lblue">
-                <div id="send_amount_text" class="textcolor_white" >Amount: 
-                </div>
-                <div id="send_amount_container" class="textcolor_white" >
+                <div id="send_receiver_input_container" class="textcolor_white" >
+                    <select id="send_receiver_dropdown" class=""  name="send_receiver_dropdown" required>
+                        <option value="">Choose..</option>
+                    </select>
                 </div>
             </div>
 
-            <div id="send_ref_container" class="listrow background_lblue">
+            <div id="send_receiver2_container" class="send_listrow background_lblue">
+                <div id="send_receiver2_label" class="textcolor_white" >Receiver: 
+                </div>
+                <div id="send_receiver2_input_container" class="textcolor_white" >
+                    <input type="text" name="send_receiver2_input" id="send_receiver2_input">
+                </div>
+                <div id="send_receiver2_id" class="hide"></div>
+            </div>
+
+
+            <div id="send_amount_container" class="send_listrow background_lblue">
+                <div id="send_amount_label" class="textcolor_white" >Amount: 
+                </div>
+                <div id="send_amount_input_container" class="textcolor_white" >
+                    <input type="number" name="send_amount_input" id="send_amount_input" inputmode="numeric" pattern="([0-9]{1,3}).([0-9]{1,3})" value="0.00" >
+                    <div id="send_amount_input_eur"> EUR</div>
+                </div>
+            </div>
+
+            <div id="send_ref_container" class="send_listrow background_lblue">
                 <div id="send_ref_label" class="textcolor_white" >Reference: 
                 </div>
-                <div id="send_ref_container" class="textcolor_white" >
+                <div id="send_ref_input_container" class="textcolor_white" >
+                    <textarea id="send_ref_input"></textarea>
                 </div>
             </div>
 
-            <div id="send_submit" class="listrow background_lblue">
+            <div id="send_submit_container" class="send_listrow background_lblue">
+                <input id="send_submit" type="submit" value="continue" class="background_black_transp textcolor_yellow">
             </div>
 
         </form>

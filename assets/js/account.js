@@ -31,6 +31,7 @@ function addNameToNavBar() {
 function fillWebsite() {
     fetch("./assets/data/data_account_trnsx.csv").then(response => response.text()).then(data => {
         let lines = data.split("\n");
+        lines = lines.sort((a,b) => new Date(b[4]) - new Date(a[4]));
         let line;
         let listContainer = document.getElementById("acc_table_container");
         let menu_btn = document.getElementsByClassName("acc_dropdown")[0];
@@ -58,7 +59,7 @@ function addRow(listContainer, line){
     if(line[7]==""){return;}
     listContainer.innerHTML += `
     <div class="acc_listrow background_lblue">
-        <div class="acc_listitem_left textcolor_white"> ${line[4].split(" ")[1].slice(5,7)+"/"+line[4].split(" ")[1].slice(8,10)} </div>
+        <div class="acc_listitem_left textcolor_white"> ${line[4].split(" ")[1].slice(8,10) + "/" + line[4].split(" ")[1].slice(5,7)} </div>
         <div class="acc_listitem_middle">
             <div class="acc_listitem_middle_top no_wrap textcolor_white font_cinzelc">${line[8]}</div>
             <div class="acc_listitem_middle_bottom no_wrap textcolor_white no_wrap ">${line[9]}</div>
