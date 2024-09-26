@@ -22,11 +22,17 @@ function addNameToNavBar() {
 
 function fillWebsite() {
     fetch("./assets/data/data_accounts.csv").then(response => response.text()).then(data => {
-        let lines = data.split("\n");
-        let line;
+        let line, lines;
         let listContainer = document.getElementById("db_table_container");
         listContainer.innerHTML = "";
-
+        
+        if(sessionStorage.getItem("accounts")==null){
+            lines = data.split("\n");
+            sessionStorage.setItem("accounts", data);
+        } else {
+            lines = sessionStorage.getItem("accounts").split("\n");
+            
+        }
         for (let i = 0; i < lines.length; i++) {
             line = lines[i].split(";");
             if (line[1] == sessionStorage.getItem(user_id)) {

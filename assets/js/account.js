@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let send2 = document.getElementById("acc_send_btn");
     let move = document.getElementById("acc_move_btn");
     let move2 = document.getElementById("acc_move");
+    let back_btn = document.getElementById("nav_bar_left_btn");
+
+    back_btn.addEventListener("click", function(){loadPreviousPage();})
     logout.addEventListener("click", logout_user);
     if(sessionStorage.getItem(acc_kind)=="credit card"){
         send.style.display="none";

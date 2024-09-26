@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let obj_sender_id = document.getElementById("send_sender_id");
     let obj_sender_name = document.getElementById("send_sender_image_top");
     let obj_sender_acc_number = document.getElementById("send_sender_image_bottom");
+    let obj_back_btn = document.getElementById("nav_bar_left_btn");
+
 
     obj_sender_id.innerHTML = sessionStorage.getItem(acc_id);
     obj_sender_name.innerHTML = sessionStorage.getItem(acc_name);
@@ -20,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setupDropdown(send_receiver_dropdown);
     send_form.addEventListener("submit", submit);
     logout.addEventListener("click", logout_user);
+    obj_back_btn.addEventListener("click", function(){loadPreviousPage();})
     if(sessionStorage.getItem(action)=="move") {
         move_container.style.display = "flex";
         send_container.style.display = "none";
@@ -49,11 +52,14 @@ function setupDropdown(send_receiver_dropdown) {
         let lines = data.split("\n");
         let line;
         let receivers = {};
+        let objSenderID = document.getElementById("send_sender_id");
+        let sender_id_check = objSenderID.innerHTML;
 
         for (let i = 0; i < lines.length; i++) {
             line = lines[i].split(";");
             if (line[1] == sessionStorage.getItem(user_id) &&
-                line[3] != "credit card") {
+                line[3] != "credit card" &&
+                line[0] != sender_id_check) {
                     send_receiver_dropdown.innerHTML += `<option class="option" value="${line[0]}">${line[4]} [${line[0]}] [${line[2]}]: \n ${line[5]} €</option>`
                     receivers[line[0]] = [line[2],line[3]];
             }
@@ -89,14 +95,15 @@ function submit(event){
     if(!confirm("Please CHECK and CONFIRM: \n\nSender: " + sender + "\nReceiver: " + receiver + "\nAmount: " + amount*-1 + "\nReference: " + ref)) {
         return;
     }
-    //alert("SEND: " + sender_id + ", " + receiver + ", " + amount + ", " + ref);
+   
 
     addTransaction(sender_id, receiver, amount, ref, sessionStorage.getItem(acc_kind)); //+account balance in data_accounts
     if(sessionStorage.getItem(action)=="move"){
         amount *= -1;
-        //alert("MOVE: " + receiver_id + ", " + sender + ", " + amount + ", " + ref);
+        
         addTransaction(receiver_id, sender, amount, ref, receiver_kind); //+account balance in data_accounts
     }
+
     successMessage();
 }
 
@@ -128,7 +135,6 @@ function addTransaction(account_id, acc_ext, amount, ref, account_kind) {
     s = s.toString().padStart(2, '0');
     let trnsx_time = h + ":" + mm;
     let trnsx_date = " " + y + "-" + m + "-" + d + " " + trnsx_time + ":" + s;
-    alert("transaction date: " + trnsx_date);
     let balance = newBalance(account_id, amount);
     
 
@@ -137,11 +143,13 @@ function addTransaction(account_id, acc_ext, amount, ref, account_kind) {
     data += row;
     sessionStorage.setItem("data", data);
     console.log(row);
-    //100486;2013;1005;savings account; 2024-07-05 12:00;12:00:00;Fr;120.00;savings plan;;6705;
+    
+    updateAccount(sessionStorage.getItem("id"), account_id, amount);
 }
 
 function newBalance(account_id, amount){
     let lines = readData("date_account", account_id);
+    
     let balance = Number(lines[0][10]) + amount;
     balance = balance.toFixed(2);
     console.log("newBalance: " + lines[0][10] + " + " + amount + " = " + balance);
@@ -185,6 +193,22 @@ function readData(filter, account_id){
 
     }
     return lines;
+}
+
+function updateAccount(user_id, account_id, amount){
+    let line;
+    let lines = sessionStorage.getItem("accounts").split("\n");
+    for (let i = 0; i < lines.length; i++) {
+        line = lines[i].split(";");
+        if (line[1] == user_id && line[0]==account_id) {
+            console.log("Update account?: " + line[1] + " vs. " + user_id + line[0] + " vs. " + account_id);
+            console.log("to string: \n" + line.toString());
+            line[5] = Number(line[5]) + amount;
+            lines[i] = line.join(";");
+        }
+    }
+    console.log(lines.join("\n"));
+    sessionStorage.setItem("accounts", lines.join("\r\n"));
 }
 
 function logout_user(){
