@@ -97,14 +97,34 @@ function submit(event){
 }
 
 function successMessage() {
+    let message_cont = document.getElementById("send_confirm_container");
+    let btn = document.getElementById("send_confirm_btn");
     
+    message_cont.style.display = "block";
+    btn.addEventListener("click", function(){
+        window.location.replace("account.html");
+    })
+
 }
 
 function addTransaction(account_id, acc_ext, amount, ref, account_kind) {
     //was wir brauchen: trnsx_id, datum, zeit, balance as of today
     let trnsx_id = createTrnsxID();
-    let trnsx_date = new Date();
-    let trnsx_time = trnsx_date.getTime();
+    let trnsx_date_helper = new Date();
+    let m = trnsx_date_helper.getMonth() + 1 
+    m = m.toString().padStart(2, '0');
+    let y = trnsx_date_helper.getFullYear();
+    let d = trnsx_date_helper.getDate();
+    d = d.toString().padStart(2, '0');
+    let h = trnsx_date_helper.getHours();
+    h = h.toString().padStart(2, '0');
+    let mm = trnsx_date_helper.getMinutes();
+    mm = mm.toString().padStart(2, '0');
+    let s = trnsx_date_helper.getSeconds();
+    s = s.toString().padStart(2, '0');
+    let trnsx_time = h + ":" + mm;
+    let trnsx_date = " " + y + "-" + m + "-" + d + " " + trnsx_time + ":" + s;
+    alert("transaction date: " + trnsx_date);
     let balance = newBalance(account_id, amount);
     
 
