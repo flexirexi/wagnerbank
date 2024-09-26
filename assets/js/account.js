@@ -50,6 +50,8 @@ function fillWebsite() {
     fetch("./assets/data/data_account_trnsx.csv").then(response => response.text()).then(data => {
         let lines = data.split("\n");
         lines = lines.sort((a,b) => new Date(b[4]) - new Date(a[4]));
+        sessionStorage.setItem("data",data);
+        console.log(data);
         let line;
         let listContainer = document.getElementById("acc_table_container");
         let menu_btn = document.getElementsByClassName("acc_dropdown")[0];

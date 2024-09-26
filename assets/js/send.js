@@ -105,7 +105,8 @@ async function addTransaction(acc_id, acc_ext, amount, ref) {
         console.log(data);
 
         data += "\n" + "haahhahahahahahahahahahahahahaha";
-
+        sessionStorage.setItem("data", data);
+        return;
         const options_update = {
             method: "post",
             headers: {
