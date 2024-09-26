@@ -79,12 +79,23 @@ function submit(event){
     ref = document.getElementById("send_ref_input").value;
     alert("SEND: " + sender_id + ", " + receiver + ", " + amount + ", " + ref);
 
-    //let send_result = addTransaction(sender_id, receiver, amount, ref); //+account balance in data_accounts
+    let send_result = addTransaction(sender_id, receiver, amount, ref); //+account balance in data_accounts
     if(sessionStorage.getItem(action)=="move"){
         alert("MOVE: " + receiver_id + ", " + sender + ", " + amount + ", " + ref);
-        //let move_result = addTransaction(receiver_id, sender, amount*-1, ref); //+account balance in data_accounts
+        let move_result = addTransaction(receiver_id, sender, amount*-1, ref); //+account balance in data_accounts
     }
     //sucessMessage(send_result, move_result);
+}
+
+function addTransaction(acc_id, acc_ext, amount, ref) {
+    fetch("./assets/data/data_account_trnsx.csv").then(response => response.text()).then(data => { 
+        data += "\n" + "hahahahahahahahahahahahahahahah";
+        fetch("./assets/data/data_accounts.csv", {
+            method: "PUT",
+            headers: {"Content-Type": "text/csv"},
+            body: data
+        });
+    })
 }
 
 function logout_user(){
