@@ -87,15 +87,45 @@ function submit(event){
     //sucessMessage(send_result, move_result);
 }
 
-function addTransaction(acc_id, acc_ext, amount, ref) {
-    fetch("./assets/data/data_account_trnsx.csv").then(response => response.text()).then(data => { 
-        data += "\n" + "hahahahahahahahahahahahahahahah";
-        fetch("./assets/data/data_accounts.csv", {
-            method: "PUT",
-            headers: {"Content-Type": "text/csv"},
+async function addTransaction(acc_id, acc_ext, amount, ref) {
+    // COPY and modified from https://dev.to/tienbku/javascript-fetch-getpostputdelete-example-3dmp ------- >
+    const options = {
+        method: "get",
+        headers: {
+            "Content-Type": "text/csv",
+        }
+    };
+    
+        const response = await fetch("./assets/data/data_account_trnsx.csv", options);
+        if(!response.ok) {
+            const message = "Error with status code " + response.status;
+            throw new Error(message); 
+        }
+        let data = await response.text();
+        console.log(data);
+
+        data += "\n" + "haahhahahahahahahahahahahahahaha";
+
+        const options_update = {
+            method: "post",
+            headers: {
+                "Content-Type": "text/csv",
+                "Cache-Control": "no-cache"
+            },
             body: data
-        });
-    })
+        };
+        const response_update = await fetch("./assets/data/data_account_trnsx_copy.csv", options_update);
+        if(!response_update.ok) {
+            const message_update = "Writing Error with status code " + response_update.status;
+            throw new Error(message_update);
+        }
+        console.log("updated successfully");
+    
+    //END COPY from dev.to -> way more "elegant" than my previous fetch solutions... ---------------------->
+
+    
+
+
 }
 
 function logout_user(){
