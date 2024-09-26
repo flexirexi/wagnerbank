@@ -9,8 +9,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let send_input = document.getElementById("send_receiver2_input");
     let logout = document.getElementById("logout");
     let send_form = document.getElementById("send_form");
-    
-   // send_form.addEventListener("submit", submit);
+    let send_receiver_dropdown = document.getElementById("send_receiver_dropdown");
+
+    setupDropdown(send_receiver_dropdown);
+    send_form.addEventListener("submit", submit);
     logout.addEventListener("click", logout_user);
     if(sessionStorage.getItem(action)=="move") {
         move_container.style.display = "flex";
@@ -32,14 +34,48 @@ document.addEventListener("DOMContentLoaded", function () {
     addNameToNavBar();
 })
 
-function submit(){
-    
-    getConfirmation();
-    addTransaction(); //+account balance in data_accounts
+function setupDropdown(send_receiver_dropdown) {
+    fetch("./assets/data/data_accounts.csv").then(response => response.text()).then(data => {
+        let lines = data.split("\n");
+        let line;
+
+        for (let i = 0; i < lines.length; i++) {
+            line = lines[i].split(";");
+            if (line[1] == sessionStorage.getItem(user_id) &&
+                line[3] != "credit card") {
+                    send_receiver_dropdown.innerHTML += `<option class="option" value="${line[1]}">${line[4]} [${line[2]}]: \n ${line[5]} €</option>`
+            }
+        }
+    });
+}
+
+function submit(event){
+    let sender, sender_id, receiver_intern, receiver_intern_id, receiver_extern, amount, ref;
+    let obj_sender_id = document.getElementById("send_sender_id");
+    let obj_sender = document.getElementById("send_sender_image_top");
+    event.preventDefault();
+
+    //getConfirmation();
+    sender = obj_sender.innerHTML;
+    sender_id = obj_sender_id.innerHTML;
     if(sessionStorage.getItem(action)=="move"){
-        addMovement(); //+account balance in data_accounts
+        receiver_intern = document.getElementById("send_receiver_dropdown").value;
+        receiver_intern_id = document.getElementById("send_receiver_id").innerHTML;
+        receiver_extern = "";
+    } else {
+        receiver_extern = document.getElementById("send_receiver2_input").value;
+        receiver_intern = "";
+        receiver_intern_id = "";
     }
-    sucessMessage();
+    amount = document.getElementById("send_amount_input").value;
+    ref = document.getElementById("send_ref_input").value;
+    alert(sender_id + " " + receiver_intern + " extern: " + receiver_extern + " " + amount + " " + ref);
+
+    let send_result = addTransaction(sender_id, receiver_ext, amount, ref); //+account balance in data_accounts
+    if(sessionStorage.getItem(action)=="move"){
+        let move_result = addTransaction(receiver_intern_id, sender, amount*-1, ref); //+account balance in data_accounts
+    }
+    sucessMessage(send_result, move_result);
 }
 
 function logout_user(){

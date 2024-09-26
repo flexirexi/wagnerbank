@@ -794,6 +794,13 @@ footer {
     width: 100%;
 }
 
+#send_receiver_dropdown, .option {
+    overflow-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
 #send_ref_input {
     height: 50px;
     resize: none;
