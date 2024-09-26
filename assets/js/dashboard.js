@@ -1,5 +1,5 @@
 const user_id = "id", user_first = "user_firstname", user_last = "user_lastname";
-const acc_id = "account_id";
+const acc_id = "account_id", acc_kind = "account_kind";
 
 document.addEventListener("DOMContentLoaded", function () {
     //alert(global_user.firstname + " " + global_user.lastname + ": " + global_user.id);
@@ -65,14 +65,18 @@ function addRow(listContainer, line){
             <span class=" textcolor_white" style="color: lightgray; font-size: 9px;">EUR</span>
         </div>
         <div class="hide account_id">${line[0]}</div>
+        <div class="hide account_kind">${line[3]}</div>
     </div>
     `;
     let listrows = document.getElementsByClassName("listrow");
     let acc_selected;
+    let acc_selected_kind;
     for(let listrow of listrows) {
         listrow.addEventListener("click", function(){
             acc_selected = this.getElementsByClassName("account_id")[0].innerHTML;
+            acc_selected_kind = this.getElementsByClassName("account_kind")[0].innerHTML;
             sessionStorage.setItem(acc_id, acc_selected);
+            sessionStorage.setItem(acc_kind, acc_selected_kind);
             window.location.assign("account.html");
         })
     }

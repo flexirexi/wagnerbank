@@ -1,20 +1,35 @@
 const user_id = "id", user_first = "user_firstname", user_last = "user_lastname";
-const acc_id = "account_id";
+const acc_id = "account_id", acc_kind = "account_kind";
+const action="action";
 
 document.addEventListener("DOMContentLoaded", function () {
     //alert(global_user.firstname + " " + global_user.lastname + ": " + global_user.id);
     let logout = document.getElementById("logout");
     let send = document.getElementById("acc_send");
     let send2 = document.getElementById("acc_send_btn");
+    let move = document.getElementById("acc_move_btn");
     logout.addEventListener("click", logout_user);
-    send.addEventListener("click", loadSend);
-    send2.addEventListener("click", loadSend);
+    if(sessionStorage.getItem(acc_kind)=="credit card"){
+        send.style.display="none";
+        send2.style.display="none";
+        move.style.display="none"
+    } else {
+        send.addEventListener("click", loadSend);
+        send2.addEventListener("click", loadSend);
+        move.addEventListener("click", loadMove);
+    }
     startCountdown();
     addNameToNavBar();
     fillWebsite();
 })
 
+function loadMove() {
+    sessionStorage.setItem(action, "move");
+    window.location.assign("send.html");
+}
+
 function loadSend(){
+    sessionStorage.setItem(action, "send");
     window.location.assign("send.html");
 }
 
