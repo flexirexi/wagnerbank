@@ -144,22 +144,21 @@ As already mentioned, the app is primarily designed for mobile use. So, there ar
 ### Logo and Navigation bar
 - fully responsive
 - on all pages
-- in mobile size, nav items collapse into an invisible menu which can be made visible by clicking on the burger icon
-- next/below the nav items, there is the pre-registration button, always ready to be clicked
-- logo is a link to the home page
-- the nav links only exist on the faq page and the home page, the visitor shouldn't be invited to go back from the pre-registration page 
-- the nav links navigate through the section of the home page  
+- in mobile size, buttons on the right side of lists "collapse" to a menu button and move to the top right, straight below the nav bar
+- within the nav bar, on the right, there is always the possibility to logout
+- logo is not clickable, since there is no "home page", the pages within the web app needs to be chained as mentioned earlier 
+- on the pages account and send, there are back buttons 
 
-home nav bar collapsed: <br>
-![home nav bar collapsed](docs/features/nav_bar_home_col.png)
+action buttons (mobile mode) as a collapse version of buttons (desktop size): <br>
+![action buttons collapsed](docs/features/nav_bar.png)
 
-home nav bar expanded:
-![home nav bar expanded](docs/features/nav_bar_home_exp.png)
+action buttons expanded:
+![action buttons expanded](docs/features/action_buttons_expanded.png)
 
-### landing page and when&where facts
-- same in all sizes
-- appeals to the emotions of the visitor and provides the only important information to know right now: when, where
-![landing page and when&where facts](docs/features/landing_facts.png)
+### dashboard - the "landing page" for returning visitors:
+- non-legacy list layout
+- lists all accounts for the logged in user, as well as their current worth and account kind, account name /number:
+![dashboard](docs/features/dashboard.png)
 
 ### inspiring/motivating video and gallery
 - the user can watch the previous events (aftermovie) to better estimate if the festival is interesting

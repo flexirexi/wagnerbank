@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
     //alert(global_user.firstname + " " + global_user.lastname + ": " + global_user.id);
     let logout = document.getElementById("logout");
     logout.addEventListener("click", logout_user);
-    startCountdown()
+    startCountdown();
     addNameToNavBar();
     fillWebsite();
-})
+});
 
 function logout_user(){
     sessionStorage.clear();
@@ -75,11 +75,11 @@ function addRow(listContainer, line){
     </div>
     `;
     let listrows = document.getElementsByClassName("listrow");
-    let acc_selected;
-    let acc_selected_kind;
-    let acc_selected_name;
-    let acc_selected_number;
     for(let listrow of listrows) {
+        let acc_selected;
+        let acc_selected_kind;
+        let acc_selected_name;
+        let acc_selected_number;
         listrow.addEventListener("click", function(){
             acc_selected = this.getElementsByClassName("account_id")[0].innerHTML;
             acc_selected_kind = this.getElementsByClassName("account_kind")[0].innerHTML;
@@ -91,13 +91,13 @@ function addRow(listContainer, line){
             sessionStorage.setItem(acc_number, acc_selected_number);
             console.log(acc_selected, acc_selected_kind, acc_selected_name, acc_selected_number);
             window.location.assign("account.html");
-        })
+        });
     }
 }
 
 function updateBalance(){
     let balances = document.getElementsByClassName("balance");
-    let total = document.getElementById("db_subtotal_amount")
+    let total = document.getElementById("db_subtotal_amount");
     let total_amount = 0.00;
     let amount = 0.00;
     for(let balance of balances){
@@ -122,7 +122,7 @@ function startCountdown() {
         footer_timer_msgbox.innerHTML = timer_text;
         footer_timer.innerHTML = timer_text;
         if(timer==25000) {
-            timer_msgbox_container.style.display = "block"
+            timer_msgbox_container.style.display = "block";
             timer_msgbox_btn.addEventListener("click", function(){
                 footer_timer.innerHTML = "03:00";
                 timer_msgbox_container.style.display = "none";

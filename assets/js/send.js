@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setupDropdown(send_receiver_dropdown);
     send_form.addEventListener("submit", submit);
     logout.addEventListener("click", logout_user);
-    obj_back_btn.addEventListener("click", function(){loadPreviousPage();})
+    obj_back_btn.addEventListener("click", function(){loadPreviousPage();});
     if(sessionStorage.getItem(action)=="move") {
         move_container.style.display = "flex";
         send_container.style.display = "none";
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     startCountdown();
     addNameToNavBar();
-})
+});
 
 function loadPreviousPage(){
     window.location.assign("account.html");
@@ -60,7 +60,7 @@ function setupDropdown(send_receiver_dropdown) {
             if (line[1] == sessionStorage.getItem(user_id) &&
                 line[3] != "credit card" &&
                 line[0] != sender_id_check) {
-                    send_receiver_dropdown.innerHTML += `<option class="option" value="${line[0]}">${line[4]} [${line[0]}] [${line[2]}]: \n ${line[5]} €</option>`
+                    send_receiver_dropdown.innerHTML += `<option class="option" value="${line[0]}">${line[4]} [${line[0]}] [${line[2]}]: \n ${line[5]} €</option>`;
                     receivers[line[0]] = [line[2],line[3]];
             }
         }
@@ -69,7 +69,7 @@ function setupDropdown(send_receiver_dropdown) {
             document.getElementById("send_receiver_id").innerHTML = this.value;
             document.getElementById("send_receiver_name").innerHTML = receivers[this.value][0];
             document.getElementById("send_receiver_kind").innerHTML = receivers[this.value][1];
-        })
+        });
     });
 }
 
@@ -114,7 +114,7 @@ function successMessage() {
     message_cont.style.display = "block";
     btn.addEventListener("click", function(){
         window.location.replace("account.html");
-    })
+    });
 
 }
 
@@ -122,7 +122,7 @@ function addTransaction(account_id, acc_ext, amount, ref, account_kind) {
     //was wir brauchen: trnsx_id, datum, zeit, balance as of today
     let trnsx_id = createTrnsxID();
     let trnsx_date_helper = new Date();
-    let m = trnsx_date_helper.getMonth() + 1 
+    let m = trnsx_date_helper.getMonth() + 1;
     m = m.toString().padStart(2, '0');
     let y = trnsx_date_helper.getFullYear();
     let d = trnsx_date_helper.getDate();
@@ -139,7 +139,7 @@ function addTransaction(account_id, acc_ext, amount, ref, account_kind) {
     
 
     let data = sessionStorage.getItem("data");
-    let row = `\r\n${trnsx_id};${account_id};${sessionStorage.getItem("id")};${account_kind};${trnsx_date};${trnsx_time};;${amount};${ref};${acc_ext};${balance};`
+    let row = `\r\n${trnsx_id};${account_id};${sessionStorage.getItem("id")};${account_kind};${trnsx_date};${trnsx_time};;${amount};${ref};${acc_ext};${balance};`;
     data += row;
     sessionStorage.setItem("data", data);
     console.log(row);
@@ -237,7 +237,7 @@ function startCountdown() {
         footer_timer_msgbox.innerHTML = timer_text;
         footer_timer.innerHTML = timer_text;
         if(timer==25000) {
-            timer_msgbox_container.style.display = "block"
+            timer_msgbox_container.style.display = "block";
             timer_msgbox_btn.addEventListener("click", function(){
                 footer_timer.innerHTML = "03:00";
                 timer_msgbox_container.style.display = "none";

@@ -13,7 +13,6 @@
 </head>
 
 <body id="login_body" class="body background_dblue">
-    <span style="font-size: 12px; color: rgb(112, 160, 218);"><b><u>test login data: click on tooltip on the top right</u></b></span>
     <div id="info" class="background_black_transp" role="tooltip">
         
         <i class="fa-regular fa-circle-question fa-2xl"></i>
@@ -30,13 +29,16 @@
     <main id="login_main">
         <img width="200" src="assets/favicon/logo_white.png" alt="Wagner Bank Logo">
         <form id="login_form">
+            <label for="username" class="label">name:</label>
             <input type="text" name="username" id="username" class="input_fontsize background_dblue textcolor_white"
-                placeholder="Username" required>
+            placeholder="Username" required>
+            <label for="pw" class="label">password:</label>
             <input type="password" name="pw" id="pw" class="input_fontsize background_dblue textcolor_white"
-                placeholder="Password" required>
+            placeholder="Password" required>
             <input type="submit" id="login_button" value="login"
-                class="button_submit background_black_transp textcolor_yellow " />
+            class="button_submit background_black_transp textcolor_yellow " />
         </form>
+        <span id="login_info" style="font-size: 12px; color: rgb(112, 160, 218);"><b><u>test login data: click on tooltip on the top right</u></b></span>
     </main>
     <script type="module" src="assets/js/index.js"></script>
     <script src="https://kit.fontawesome.com/ee874b1d34.js" crossorigin="anonymous"></script>

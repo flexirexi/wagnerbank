@@ -469,6 +469,20 @@ footer {
     background-color: black;
 }
 
+#login_info {
+    margin-top: 15px;
+    text-align: center;
+    transform: translate(0%, 150%);
+}
+
+.label {
+    color: lightgray;
+    justify-self: center;
+    max-width: 50px;
+    height: 20px;
+    transform: translate(-200%, 100%);
+    border-bottom: none !important;
+}
 
 #login_body {
     /*flex because of vertical alignment*/

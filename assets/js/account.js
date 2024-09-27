@@ -1,5 +1,5 @@
-const user_id = "id", user_first = "user_firstname", user_last = "user_lastname";
-const acc_id = "account_id", acc_kind = "account_kind", acc_name = "account_name", acc_number = "account_number";
+const user_first = "user_firstname", user_last = "user_lastname";
+const acc_id = "account_id", acc_kind = "account_kind";
 const action="action";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let move2 = document.getElementById("acc_move");
     let back_btn = document.getElementById("nav_bar_left_btn");
 
-    back_btn.addEventListener("click", function(){loadPreviousPage();})
+    back_btn.addEventListener("click", function(){loadPreviousPage();});
     logout.addEventListener("click", logout_user);
     if(sessionStorage.getItem(acc_kind)=="credit card"){
         send.style.display="none";
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     startCountdown();
     addNameToNavBar();
     fillWebsite();
-})
+});
 
 function loadMove() {
     sessionStorage.setItem(action, "move");
@@ -82,7 +82,7 @@ function fillList(data){
     menu_btn.addEventListener("click", function(){
         let dropdown_content = document.getElementsByClassName("acc_dropdown-content")[0];
         dropdown_content.style.display == "block" ? dropdown_content.style.display = "none" : dropdown_content.style.display = "block";
-    })
+    });
     
     listContainer.innerHTML = "";
     for (let i = 1; i < lines.length; i++) {
@@ -134,7 +134,7 @@ function startCountdown() {
         footer_timer_msgbox.innerHTML = timer_text;
         footer_timer.innerHTML = timer_text;
         if(timer==25000) {
-            timer_msgbox_container.style.display = "block"
+            timer_msgbox_container.style.display = "block";
             timer_msgbox_btn.addEventListener("click", function(){
                 footer_timer.innerHTML = "03:00";
                 timer_msgbox_container.style.display = "none";

@@ -15,7 +15,7 @@
 <body id="db_body" class="body background_dblue">
     <header id="nav_bar">
         <div id="nav_bar_left">
-            <button id="nav_bar_left_btn" class="background_black_transp textcolor_white" >
+            <button id="nav_bar_left_btn" class="background_black_transp textcolor_white" >.
                 <i class="fa-solid fa-arrow-left"></i>
             </button>
         </div>
@@ -27,7 +27,7 @@
         <div id="nav_bar_right">
             <span id="nav_bar_right_text">HALLO</span>
             <div class="dropdown">
-                <button class="dropbtn">
+                <button class="dropbtn">.
                   <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
@@ -77,8 +77,7 @@
             </div>
 
             <div id="send_receiver2_container" class="send_listrow background_lblue">
-                <div id="send_receiver2_label" class="textcolor_white" >Receiver: 
-                </div>
+                <label id="send_receiver2_label" for="send_receiver2_input" class="textcolor_white">Reveiver:</label>
                 <div id="send_receiver2_input_container" class="textcolor_white" >
                     <input type="text" name="send_receiver2_input" id="send_receiver2_input" placeholder="Enter receiver account">
                 </div>
@@ -87,8 +86,8 @@
 
 
             <div id="send_amount_container" class="send_listrow background_lblue">
-                <div id="send_amount_label" class="textcolor_white" >Amount: 
-                </div>
+                <label id="send_amount_label" for="send_amount_input" class="textcolor_white" >Amount: 
+                </label>
                 <div id="send_amount_input_container" class="textcolor_white" >
                     <input type="number" min="0.01" name="send_amount_input" id="send_amount_input" inputmode="numeric" step="0.01" value="0.00" required>
                     <div id="send_amount_input_eur"> EUR</div>
@@ -96,8 +95,8 @@
             </div>
 
             <div id="send_ref_container" class="send_listrow background_lblue">
-                <div id="send_ref_label" class="textcolor_white" >Reference: 
-                </div>
+                <label id="send_ref_label" class="textcolor_white" for="send_ref_input">Reference: </label>
+
                 <div id="send_ref_input_container" class="textcolor_white" >
                     <textarea id="send_ref_input" placeholder="Enter reference..."></textarea>
                 </div>
