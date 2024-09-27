@@ -158,94 +158,55 @@ action buttons expanded:
 ### dashboard - the "landing page" for returning visitors:
 - non-legacy list layout
 - lists all accounts for the logged in user, as well as their current worth and account kind, account name /number:
+- sums up all current amounts to a total amount
 ![dashboard](docs/features/dashboard.png)
 
-### inspiring/motivating video and gallery
-- the user can watch the previous events (aftermovie) to better estimate if the festival is interesting
-- the images will give the user even more impressions of the moments at this festival
-![video and gallery of the festival](docs/features/video_gallery.png )
-
-### welcome section
-- the overview which welcomes the visitor only now with words
-- this is for first time users who don't know this event and want to know a bit more about it
-![welcome text](docs/features/welcome.png)
-
-### line-up section
-- this sectin tells the visitor if their favourite DJs/artists will perform there
-- this is not a finished list and will be updated contineously (this is common practice otherwise we'd loos prospective customers)
-- the starring DJs are on top, named separately with a higher attention
-![line-up section](docs/features/line_up.png)
-
-### second gallery
-- a second gallery mainly to provide more variety to the webpage
-- more impressions
-
-![second gallery](docs/features/second_gallery.png)
+### automatic logout after 3 minutes inactivity
+- important in mobile banking: a timer to logout automatically
+- usually, a client who wants to "quickly get things done" tend to forget to log out properly - let the timer do it for him/her
+- the feature: at the bottom right the countdown is shown and when the timer reaches 25 seconds (left), then a message box will show up where the visitor has to act to stay logged in
+![timer at the bottom](docs/features/logout2.png )
+![timer show up and blocks screen](docs/features/logout1.png)
 
 
-### ticket information
-- provide details about ticket conditions and overnight stay
-- with this overview, the visitors can take time to think this through 
-- the visitor shall feel comfortable by not having to decide now
-- since this is a special festival, the visitor really should think about the airport they'd like to departure
-- after all these information, the ticket sale start date is revealed
-- the mobile version show the information below each other, the desktop version in a grid of 3 columns 1 row
+### transaction page
+- it's always useful to have an overview of all your recent transactions and current balance
+- the visitor will see a list of transactions with details/references and amounts - quite usual mobile banking
+- please note: the test accounts have all just fictive data, but the amounts match, also in regards to dates and time (several transactions at the same day which is a realistic scenario)
+- the transactions are sorted by datetime, descending, meaning the latest at the top
+- in addtion, when the client enters a transaction, it will show up accordingly
+![welcome text](docs/features/transactions.png)
 
-mobile size:
+### account actions: send/move money
+- this is a feature where a desktop user clicks on a button, a mobile user selects from a menu
+- the client can "move" money between his/her accounts as well as send extern
+![action buttons](docs/features/action_buttons.png)
+![actions menu](docs/features/actions_menu.png)
 
-![ticket information mobile](docs/features/ticket_information_m.png)
+### send/move money - form
+- after clicking on the action buttons/menu buttons, the visitor will be redirected to a money transfer page, a simple form to fill and confirm
+- the features: one can't send/receive money from/to a credit card
+- one can't send money to the same account one is sending from
+- to prevent the above cases, the money movement form will use a dropdown to prefilter which internal accounts are possible to send to
+- when sending money externally, there will be a text input
+- accounts are allowed to go negative, but one can't send negative amounts
+- also, the smalles interval to send is 1 cent - one can't send fractions of cents
+- a feature that is not implemented: precision problem -> after calculating with monetary values the result will be rounded to the full cents
 
-desktop version:
-
-![ticket information](docs/features/ticket_information.png)
-
-
-
-### vip section
-- the vip section states the exclusivity of purchaging a VIP ticket
-- it basically is an add-on to the regular ticket, caused by the standardized process of travel and overnight stay
-- the add-ons: vip area, back-stage, vip restaurant reservation
-- at the bottom, the visitor can click a button which leads them to a separate page to pre-register (call to action)
-
-![vip section](docs/features/vip.png)
-
-
-### stay tuned section
-- if the user decides not to register for vip tickets, we offer them to subscribe our newsletter
-- they might be interested in the regular ticket 
-- they might be generally interested in this festival and want to follow it first
-
-![subscribe section](docs/features/subscribe.png)
-
-### faq section
-- all that is nice, but the visitor still has unanswered questions
-- to provide many details, this section offers a link to a proper faq section
-
-![faq section](docs/features/faq.png)
-
-### footer
-- a proper festival page needs social media links
-- such event attrack young people, so, at least tiktok and instagram are necessary - facebook and X are optional
-- this footer is visible on all three webpages
-
-![footer social media](docs/features/footer.png)
+![dropdown](docs/features/dropdown.png)
+![move money](docs/features/move_money.png)
+![send money](docs/features/move_money.png)
 
 
-### faq webpage
-- this page is structured in 3 sections: faq for the ticketing, for the journey and for the festival itself
-- this section will be updated contineously
-- many answers for the early state of this festival - to make the visitor feel safe/comfortable
+### after second confirmation, what happens?
+- the money sent will creat one transaction
+- that transaction will be added to the senders account and will affect the current balance with immediate effect
+- a money movement is nothing more than a double transaction with a negative value for the sending account and a positive value for the receiving account, the JS will add the amounts moved to both accounts with immediate effect (the current time stamp will be visible in the transaction list)
 
-![faq webpage](docs/features/faq_webpage.png)
 
-### pre-register webpage
-- the main reason the website exists
-- here, the visitor can register for a vip ticket reservation one day before the ticket sale starts
-- country is needed as the tickets will fairly be allocated to each country
-- it is not binding - just a preference which will result in a higher chance of actually getting a ticket
-- preferences are ticket category and departuring/arriving airport as well as the amount of tickets (up to 4)
+![confirmation on transaction](docs/features/confirmation.png)
 
-![pre-register webpage](docs/features/preregister_webpage.png)
+
 
 
 ## Upcoming features
