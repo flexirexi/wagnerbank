@@ -312,10 +312,14 @@ index.html:
 ## Fixed Bugs
 
 html for index.html 1:
+- 1
+- 2
+- 3
 
-![fixed bugs html home 1](docs/validator_testing/html01.png)
+![fixed bugs html home](docs/validator_testing/vt_html_bugs.png)
 
-html for index.html 2:
+html for dashboard.html:
+
 
 ![fixed bugs html home 2](docs/validator_testing/html02.png)
 
