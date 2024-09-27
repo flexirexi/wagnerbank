@@ -102,21 +102,27 @@ As already mentioned, the app is primarily designed for mobile use. So, there ar
 
 <details>
   <summary>login (index.html)</summary>
-  <img src="docs/wireframes/wireframe_index.png" width="400px">
+  <img src="docs/wireframes/wf_index.png" width="400px">
 </details>
 <details>
-  <summary>pre-register page (preregister.html)</summary>
-  <img src="docs/wireframes/wireframe_preregister.png" width="400px">
+  <summary>dashboard page (dashboard.html)</summary>
+  <img src="docs/wireframes/wf_db.png" width="400px">
 </details>
 <details>
-  <summary>faq pag (faq.html)</summary>
-  <img src="docs/wireframes/wireframe_faq.png" width="400px">
+  <summary>account history (account.html)</summary>
+  <img src="docs/wireframes/wf_transactions.png" width="400px">
+</details>
+<details>
+  <summary>move and external money transfer (send.html)</summary>
+  <img src="docs/wireframes/wf_move.png" width="400px">
+  <img src="docs/wireframes/wf_send.png" width="400px">
 </details>
 
 # Technologies used
 ## Languages
 - HTML
 - CSS
+- JS
 
 ## Frameworks and tools
 - Git
@@ -137,7 +143,7 @@ As already mentioned, the app is primarily designed for mobile use. So, there ar
 ## Existing features
 ### Logo and Navigation bar
 - fully responsive
-- on all 3 pages
+- on all pages
 - in mobile size, nav items collapse into an invisible menu which can be made visible by clicking on the burger icon
 - next/below the nav items, there is the pre-registration button, always ready to be clicked
 - logo is a link to the home page
