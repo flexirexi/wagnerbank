@@ -211,14 +211,26 @@ action buttons expanded:
 
 ## Upcoming features
 
-### contineously updating the line-up
-- a good organizer keeps its line-up clean otherwise you might loose customers before they are even interested in your event
-- each DJ will attract their fans
+**General words**
+banking is generally changing, so, there are many features that will/should come up.
 
-### faq section update
-- the closer the event is the more specific your visitors will have
-- eg. which terminal at the airports, are they flying together with other guests?
-- to really service the customers, a contact form should be added where visitors can ask openly
+### work on the precision problem
+- in floating point number, 0.3 + 0.3 + 0.3 does not equal 0.9(see picture below)
+- imagine a bank would not be able to book the correct monetary value from your account
+- the higher (or closer towards 0) a number gets, the more imprecise it becomes
+- strictly, there should be a feature, calculating monetary values in decimal numbers
+
+![imprecision](docs/upcoming/precision.png)
+
+
+### bind the timer to the local time
+- currently, the timer counts down from 3 minutes
+- when the user minimizes the brower window the timer might not go ahead - sometimes it does
+- when binding the timer to the local time, the web app will automatically log you out, as soon as you maximize the browser again because it recognizes that it has passed the deadline
+
+### request a loan
+- what is more typical for a bank than granting loans?
+- this feature should be updated on the account page, straight under move money
 
 
 # Testing
@@ -228,73 +240,76 @@ action buttons expanded:
 
 index.html:
 
-![home html validation ok](docs/validator_testing/html_home_ok.png)
+![home html validation ok](docs/validator_testing/vt_html_01_index_OK.png.png)
 
-faq.html:
+dashboard.html:
 
-![faq html validation ok](docs/validator_testing/html_faq_ok.png.png)
+![db html validation ok](docs/validator_testing/vt_html_02_dashboard_OK.pngpng.png)
 
-index.html:
+account.html:
 
-![preregister html validation ok](docs/validator_testing/html_preregister_ok.png.png)
+![acc html validation ok](docs/validator_testing/vt_html_03_account_OK.pngpng)
 
+send.html:
+
+![send html validation ok](docs/validator_testing/vt_html_04_send_OK.png.pngpng)
 
 
 ### CSS
 - done, using the W3C CSS validation
 
-![css ok](docs/validator_testing/css_ok.png)
+![css ok](docs/validator_testing/vt_css_OK.png.png)
 
 
 
 ### Performance
-- index.html, faq.html and preregister.html are ok
+- all html are ok 
+- to the accessibility part: the performance is "low" because of the google font Cinzel, however, this font is essential for this website
 
-![lighthouse index.html ok](docs/validator_testing/lighthouse_home.png)
+![lighthouse index.html ok](docs/validator_testing/vt_perf_01_index_OK.png)
 
-![lighthouse faq.html ok](docs/validator_testing/lighthouse_faq.png)
+![lighthouse db.html ok](docs/validator_testing/vt_perf_02_db_ok.png)
 
-![lighthouse preregister.html ok](docs/validator_testing/lighthouse_preregister.png)
+![lighthouse acc.html ok](docs/validator_testing/vt_perf_03_account_OK.png)
 
+![lighthouse send.html ok](docs/validator_testing/vt_perf_04_send_nok_googlefonts.png.png)
 
 ### Responsiveness
 - see responsiveness with https://ui.dev/amiresponsive?
 
-![am i responsive? yes](docs/validator_testing/responsive.png)
+![am i responsive? yes](docs/validator_testing/vt_resp_01_ok.png.png)
+![am i responsive? yes](docs/validator_testing/vt_resp_02_ok.png.png)
+![am i responsive? yes](docs/validator_testing/vt_resp_03_ok.png.png)
+![am i responsive? yes](docs/validator_testing/vt_html_04_send_OK.png.png.png)
 
 
 ### Accessability
 - accessibility was checked with the wave tool
+- **Comment: I realized that there were errors for missing values for buttons. I highly doubt that this should be considered as an error -> it can't be that all back-buttons, forward-buttons etc without text are seen as failed accessibility. I may remind that all android phones have such a back button without text... **
+- so, i had to find quick solutions which negatively affected the design.. 
 
-![accessibility ok](docs/validator_testing/accessibility_ok.png)
-
+![accessibility ok](docs/validator_testing/vt_accessibility_01_ok.png)
+![accessibility ok](docs/validator_testing/vt_accessibility_02_ok.png)
+![accessibility ok](docs/validator_testing/vt_accessibility_03_ok.png)
+![accessibility ok](docs/validator_testing/vt_accessibility_04_ok.png)
 
 ## Fixed Bugs
 
 html for index.html 1:
-- 1
-- 2
-- 3
+- 1 as mentioned above, I "fixed" some accessibility bugs
+- 2 labels were not assign well to inputs
+- 3 I fixed a nested css
 
-![fixed bugs html home](docs/validator_testing/vt_html_bugs.png)
-
+![fixed bugs html home](docs/validator_testing/vt_js_01_bugs.png.png)
+![fixed bugs html home](docs/validator_testing/vt_html_04_send_bugs.png.png.png)
+![fixed bugs html home](docs/validator_testing/vt_accessibility_04_bugs.png.png.png)
 html for dashboard.html:
 
 
-![fixed bugs html home 2](docs/validator_testing/html02.png)
-
-html for preregister.html 1:
-
-![fixed bugs html preregister 1](docs/validator_testing/html_preregister01.png)
-
-html for preregister.html 2:
-
-![fixed bugs html preregister 2](docs/validator_testing/html_preregister02.png)
-
 
 ## Unfixed Bugs
-- indirect bug: there must be found a way to show the landing page fully covered with an image without impacting the performance of the pageloading (in lighthouse)
-- sometimes, rather random, it can happen that lighthouse measures a performance lower than 90%, even with removing all rendering blocking scripts/imports like google fonts and Font awesome. Not even the removal of the landing page image prevents that. Nevertheless, the performance most of the times above 90%.
+- accessibility: short solution are white dots next to buttons without text
+- minor bug: when successully done a transaction, a movement between internal accounts will be correctly calculated but one label is missing: the transactions list only takes the account type/kind and adds it to the transactions info - the name is missing
 
 
 ## User Story testing
