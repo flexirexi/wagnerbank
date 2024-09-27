@@ -1,5 +1,7 @@
 const user_id = "id", user_first = "user_firstname", user_last = "user_lastname";
-
+/**
+ * The script will only execute after the html has been loaded.
+ */
 document.addEventListener("DOMContentLoaded", function () {
     let login_form = document.getElementById("login_form");
 
@@ -12,6 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/**
+ * index.html is a very minimalistic page, so, there is not much to load at the beginning
+ * but now: the login process starts which initiates some variables for the whole login session
+ * initially, only fetch with get and post method were used but post doesnt seem to be allowed at github/gitpod which makes
+ * perfectly sence -> switch to sessionstorage data
+ * @param {the username that the user entered} login_username 
+ * @param {the password that the user entered} login_pw 
+ */
 function login(login_username, login_pw) {
     fetch("./assets/data/data_login.csv").then(response => response.text()).then(data => {
         let lines = data.split("\n");

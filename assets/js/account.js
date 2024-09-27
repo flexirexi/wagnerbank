@@ -1,7 +1,13 @@
+/**
+ * as you can see, the constants here are the same as in dashboard..
+ */
 const user_first = "user_firstname", user_last = "user_lastname";
 const acc_id = "account_id", acc_kind = "account_kind";
 const action="action";
 
+/**
+ * same principle, first initiating the website then fill it like a template
+ */
 document.addEventListener("DOMContentLoaded", function () {
     //alert(global_user.firstname + " " + global_user.lastname + ": " + global_user.id);
     let logout = document.getElementById("logout");
@@ -53,7 +59,9 @@ function addNameToNavBar() {
 function loadPreviousPage(){
     window.location.assign("dashboard.html");
 }
-
+/**
+ * here we will load the transactions data once and "send" it to the sessionstorage
+ */
 function fillWebsite() {
     if(sessionStorage.getItem("data")==null) {
         fetch("./assets/data/data_account_trnsx.csv").then(response => response.text()).then(data => {
@@ -66,7 +74,13 @@ function fillWebsite() {
         fillList(sessionStorage.getItem("data"));
     }
 }
-
+/**
+ * first, we need to split the long string by rows, then by separator
+ * after that we are able to sort by the column of our choice
+ * filter options should be applied while splitting each each row by the separator -> there you can decide whether you want to 
+ * push row [i] or not
+ * @param {this is the transactions data set we want to deal with} data 
+ */
 function fillList(data){
     let listContainer = document.getElementById("acc_table_container");
     let menu_btn = document.getElementsByClassName("acc_dropdown")[0];
@@ -94,7 +108,12 @@ function fillList(data){
     }
    
 }
-
+/**
+ * adding the row here in this context means to add actual html element to the page - no dataset manipulation is meant here
+ * @param {the container with the listrows} listContainer 
+ * @param {line is the row, split by separat from the previous function} line 
+ * @returns 
+ */
 function addRow(listContainer, line){
     if(line[7]==""){return;}
     listContainer.innerHTML += `

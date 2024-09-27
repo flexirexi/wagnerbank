@@ -47,6 +47,16 @@ function loadPreviousPage(){
     window.location.assign("account.html");
 }
 
+/**
+ * what is needed here: a dropdown has a set of internal account which need to be mapped with account kind (to exclude credit cards)
+ * also mapped with name, for the user to recognize, the current amount also is useful for the client to decide where better to move
+ * money..
+ * @param {this is the dropdown being used when the user wants to internally move money to another account. 
+ * we need to prevent him/her choosing any account freely. why separating? in the real world, this transaction has 
+ * real immediate effect and, properly, goes through less audit processes in the bank. 
+ * this object will be hidden, when the user sends money externally} send_receiver_dropdown 
+ */
+
 function setupDropdown(send_receiver_dropdown) {
     fetch("./assets/data/data_accounts.csv").then(response => response.text()).then(data => {
         let lines = data.split("\n");
@@ -72,7 +82,11 @@ function setupDropdown(send_receiver_dropdown) {
         });
     });
 }
-
+/**
+ * the tricky part, a lot of arrays and objects to correctly fit to each other, to make it compatible with session storage when 
+ * updating the data sets
+ * @param {we prevent the the default submit and do our own version of it} event 
+ */
 function submit(event){
     event.preventDefault();
     let sender, sender_id, receiver, receiver_id, receiver_kind, amount, ref;
@@ -161,7 +175,13 @@ function createTrnsxID(){
     let trnsx_id = parseInt(lines[1][0]) + 1;
     return trnsx_id;
 }
-
+/**
+ * here's the prove: no fetch anymore as we might update already updated data, the csv files, now in this session, are old/not up to date
+ * anymore
+ * @param {this opens full potential to the function, kind of a sub function which is decided by an if condition} filter 
+ * @param {from which account i want to read data} account_id 
+ * @returns 
+ */
 function readData(filter, account_id){
     let lines = [];
     lines = sessionStorage.getItem("data").split("\r\n");

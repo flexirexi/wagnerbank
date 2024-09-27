@@ -1,6 +1,13 @@
+/**
+ * the constants are needed to ensure a standardized sessionstorage get/set usage
+ *  
+ */
 const user_id = "id", user_first = "user_firstname", user_last = "user_lastname";
 const acc_id = "account_id", acc_kind = "account_kind", acc_name = "account_name", acc_number = "account_number";
 
+/**
+ * first, setting up some standard event listeners, then filling the website
+ */
 document.addEventListener("DOMContentLoaded", function () {
     //alert(global_user.firstname + " " + global_user.lastname + ": " + global_user.id);
     let logout = document.getElementById("logout");
@@ -19,7 +26,13 @@ function addNameToNavBar() {
     let span = document.getElementById("nav_bar_right_text");
     span.innerHTML = `Hello, ${sessionStorage.getItem(user_first)} ${sessionStorage.getItem(user_last)}!`;
 }
-
+/**
+ * the concept of the login session: we load the server side csv files once - then save them as strings to session storage
+ * why? when adding transaction, we need a data set in the same context -> we cant save new transactions here in sessionstorage 
+ * and use csv all the time to load data -> mismatch -> so, once reading, then storing in this session
+ * that gives us the opportunity to clear all data when loggin out
+ * in addition, i save a lot of code because i dont have to handle async tasks here :)
+ */
 function fillWebsite() {
     fetch("./assets/data/data_accounts.csv").then(response => response.text()).then(data => {
         let line, lines;
@@ -28,6 +41,8 @@ function fillWebsite() {
         
         if(sessionStorage.getItem("accounts")==null){
             lines = data.split("\n");
+            //here we will load the data to the sessionstorage - no need to read the above csv in this login session again
+            //however, we cant permanently save new transactions (fot that I'd need sql..)
             sessionStorage.setItem("accounts", data);
         } else {
             lines = sessionStorage.getItem("accounts").split("\n");
@@ -95,6 +110,9 @@ function addRow(listContainer, line){
     }
 }
 
+/**
+ * last but not least, sum up the balances to one total..
+ */
 function updateBalance(){
     let balances = document.getElementsByClassName("balance");
     let total = document.getElementById("db_subtotal_amount");
