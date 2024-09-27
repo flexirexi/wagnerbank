@@ -460,7 +460,7 @@ footer {
         padding: 15px;
         z-index: 99;
         background-color: black;
-    }
+    };
 }
 
 #tooltip {
@@ -745,7 +745,7 @@ footer {
     align-content: center;
     margin-left: 20px;
     margin-right: 15px;
-    padding: 0 auto;
+    padding: 0;
 }
 
 #send_sender_image > * {
