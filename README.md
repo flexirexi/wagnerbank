@@ -78,8 +78,6 @@ ___
 - I want to send money to extern third parties
 - I want to move money from one account to another with immediate effect
 - I want to be logged out automatically after 3 minutes inactivity - I want safety
-- I want to subscribe to a newsletter, I am interested but not in a VIP ticket
-- I want to see detailed information about my accounts, their interests, limits etc.
 
 
 ## Design
@@ -240,25 +238,25 @@ banking is generally changing, so, there are many features that will/should come
 
 index.html:
 
-![home html validation ok](docs/validator_testing/vt_html_01_index_OK.png.png)
+![home html validation ok](docs/validator_testing/vt_html_01_index_OK.png)
 
 dashboard.html:
 
-![db html validation ok](docs/validator_testing/vt_html_02_dashboard_OK.pngpng.png)
+![db html validation ok](docs/validator_testing/vt_html_02_dashboard_OK.png)
 
 account.html:
 
-![acc html validation ok](docs/validator_testing/vt_html_03_account_OK.pngpng)
+![acc html validation ok](docs/validator_testing/vt_html_03_account_OK.png)
 
 send.html:
 
-![send html validation ok](docs/validator_testing/vt_html_04_send_OK.png.pngpng)
+![send html validation ok](docs/validator_testing/vt_html_04_send_OK.png)
 
 
 ### CSS
 - done, using the W3C CSS validation
 
-![css ok](docs/validator_testing/vt_css_OK.png.png)
+![css ok](docs/validator_testing/vt_css_OK.png)
 
 
 
@@ -277,10 +275,10 @@ send.html:
 ### Responsiveness
 - see responsiveness with https://ui.dev/amiresponsive?
 
-![am i responsive? yes](docs/validator_testing/vt_resp_01_ok.png.png)
-![am i responsive? yes](docs/validator_testing/vt_resp_02_ok.png.png)
-![am i responsive? yes](docs/validator_testing/vt_resp_03_ok.png.png)
-![am i responsive? yes](docs/validator_testing/vt_html_04_send_OK.png.png.png)
+![am i responsive? yes](docs/validator_testing/vt_resp_01_ok.png)
+![am i responsive? yes](docs/validator_testing/vt_resp_02_ok.png)
+![am i responsive? yes](docs/validator_testing/vt_resp_03_ok.png)
+![am i responsive? yes](docs/validator_testing/vt_html_04_send_OK.png)
 
 
 ### Accessability
@@ -300,9 +298,9 @@ html for index.html 1:
 - 2 labels were not assign well to inputs
 - 3 I fixed a nested css
 
-![fixed bugs html home](docs/validator_testing/vt_js_01_bugs.png.png)
-![fixed bugs html home](docs/validator_testing/vt_html_04_send_bugs.png.png.png)
-![fixed bugs html home](docs/validator_testing/vt_accessibility_04_bugs.png.png.png)
+![fixed bugs html home](docs/validator_testing/vt_js_01_bugs.png)
+![fixed bugs html home](docs/validator_testing/vt_html_04_send_bugs.png)
+![fixed bugs html home](docs/validator_testing/vt_accessibility_04_bugs.png)
 html for dashboard.html:
 
 
@@ -313,118 +311,52 @@ html for dashboard.html:
 
 
 ## User Story testing
-### As a first-time user..
+### As a returning user..
 
-**I want to know what kind of festival that is and what I can expect**
-- Feature: welcome section
-- Action: give the user a brief overview about that festival
-- Expected result: the user understands that this is an electronic music festival in the atlantic ocean
+**I want to see a dashboard of all my accounts and their current monetary worth**
+- Feature: dashboard page that lists all accounts with their current value, as well as name and account number
 
-[experience](docs/user_stories/us01.png)
+![db](docs/userstories/db.png)
 
-**I want to know when and how long it takes place**
-- Feature: home landing page and faq page, first header
-- Action: inform the user about time and duration 
-- Expected result:the user is informed 
+**I want the current consolidated total amount to be shown**
+- Feature: the dashboard also sums up all accounts balances and creates a hypothetical overall total
+- Action: scroll through the list of accounts 
+- Expected result:the user is informed about the overall wealth/liability in this bank
 
-[where it takes place](docs/user_stories/us02.png)
+![sumup](docs/userstories/sumup.png)
 
-**I want to kow wwhere it takes place**
-- Feature: landing page and faq page
-- Action: inform the user about the location of the festival
-- Expected result: the user is informed that this festival is on an island in the atlantic ocean
+**I want to  see the transactions of all my accounts, where when and, if possible, why**
+- Feature: the user clicks on the respective account on account.html and will be forwarded to the transactions page 
+- Action: there, the user can scroll throught list and review the history
+- Expected result: the user is informed and hopefully knows better now how to handle money
 
-[where it takes place](docs/user_stories/us02.png)
+![trnsx](docs/userstories/trnsx.png)
 
-or faq page:
-
- ![home page scroll down](docs/user_stories/us03_1.png)
-
- ![land on the faq page](docs/user_stories/us03_2.png)
-
-**I want to see images and videos that show me the feeling  of the festival - generally, the vibe**
-- Feature: gallery1, video section and gallery2
-- Action: play the (aftermovie) video gather impressions from the previous events
-- Expected result: the user will get an idea how this festival is like
-
-just scroll down the main page:
-
-![visuals](docs/user_stories/us04_1.png)
-
-![visuals](docs/user_stories/us04_2.png)
-
-**I want social media presence: links to tiktok, instagram (possibly face book and X)**
-- Feature: footer
-- Action: links to official social media channels to connect with other fans/the festival team
-- Expected result: the user will be led to the festival's social media sites
-
-![footer](docs/user_stories/us05.png)
-
-### As a returning user...
-
-**I want to know how the stay is being managed**
-- Feature: ticket information section
-- Action: information and overview of 3 possibilities to stay overnight during the festival
-- Expected result: the user will be informed and can prepare for later possible ticket purchases
-
-![overnight stay management](docs/user_stories/us06.png)
-
-**I want to know the latest updates for the line-up**
-- Feature: line-up section
-- Action: keep the user up to date about the artists performing at this event
-- Expected result: the user will know the latest status of the line-up
-
-![line-up](docs/user_stories/us07.png)
-
-**I want to knwo when the official ticket sale starts**
-- Feature: ticket information section
-- Action: simply inform the client about the official ticket sale start 
-- Expected result: the user is informed that the official sale starts on 20th Jan, 2025 while the vip ticket sale starts one day earlier
-
-![ticket sale start](docs/user_stories/us08.png)
-
-**I want detailed information about the tickets, if possible**
-- Feature: ticket information section
-- Action: inform the client that the ticket category is strongly connected to the overnight stay and flight
-- Expected result:the client knows that tickets category is a combination of stay and flight
-
-this information is in the same overview as how the stay is being managed:
-
-![overnight stay management](docs/user_stories/us06.png)
-
-**I want to know how I can pre-regiater to buy preferred VIP tickets**
-- Feature: vip section on the home page and pre-register web page + the preregister button at the top in the nav bar
-- Action: the vip section explains the VIP ticket and has a link to the vip registration form
-- Expected result: the user will find the registration web page quite easily and quickly
-
-how to get to the pre-register on the home page:
-
-![preregister button](docs/user_stories/us09.png)
-
-then fill the form and choose your preferred options:
-
-![fill pre-registration form](docs/user_stories/us10.png)
-
-**I have several organisational questions that might be specific**
-- Feature: faq section at the end of the home page and the separate faq page with all information
-- Action: the user will be lead to the faq web page where many questions are answered - it will contineously kept up to date
-- Expected result: The user is generally provided with many details regarding the tickets, the journes and the festival itself
-
-navigate through the main page:
-
-![faq button](docs/user_stories/us11.png)
-
-then, click on the headers to expand the headers:
-
-![click on faq heading to read text](docs/user_stories/us12.png)
+**I want to send money to extern third parties**
+- Feature: in the transactions list, click on the send button or in the mobile mode, click on the menu and select the button there - the user will be forwarded to a money transfer page
+- Action: the user enters all necessary information to create a new transaction
+- Expected result: the transaction will be saved into the transactions csv on the server and will take immediate effect financially
 
 
-**I want to subscribe to a newsletter, I am interested but not in a VIP ticket**
-- Feature: stay tuned section
-- Action: enter name and email to register for the newsletter
-- Expected result: the user will be successfully subscribed
+![send](docs/userstories/send.png)
 
-![subscribe](docs/user_stories/image.png)
+
+**I want to move money from one account to anothe with immediate effect**
+- Feature: money movements within the users own accounts should alwys be faster than external transfers
+- the same process as above, just with a dropdown box to prevent sending money the wrong accounts (the same account, credit cards)
+- Action: the user enters all necessary information to create a new transaction
+- Expected result: the transaction will be saved into the transactions cvs on the server and will take immediate effect financially
+
+![move](docs/userstories/move1.png)
+![move2](docs/userstories/move2.png)
+
+**I want to be logged out automatically after 3 minutes inactivity - I want safety**
+- Feature: each page has its own timer of 3 minutes
+- the countdown is visible at the bottom
+- when only 25 sevconds are left, a message will show up, wehre the user has to take action otherwise he/she will be logged out
+
+![logout](docs/userstories/logout.png)
+
 
 
 # Deployment
@@ -434,7 +366,7 @@ The deployment was done by GitHub and gitpod:
     In the GitHub repository navigate to the Settings tab
     On the left hand menu select Pages
     For the source select Branch: main
-    After refresh you will see at the top: "Your site is published at https://flexirexi.github.io/eternal_land_festival/"
+    After refresh you will see at the top: "Your site is published at https://flexirexi.github.io/wagnerbank/"
 
 
 
@@ -445,54 +377,69 @@ The deployment was done by GitHub and gitpod:
 - Font Awesome for the icons (4 in total): https://fontawesome.com/
 
 ## Code
-No code was just copied/pasted. For all problems to solve, I took help from the following websites/people and created my own solutions out of that:
+Some was just copied/pasted. For all problems to solve, I took help from the following websites/people and created my own solutions out of that:
 
 gallery grid: 
 by [Reyshawn](https://stackoverflow.com/users/8247439/reyshawn) on [stackoverflow](https://stackoverflow.com/questions/56720810/how-to-resize-multiple-images-side-by-side-to-to-fit-the-current-screen-size)
 
-darken a background-image: 
-by [Shin](https://stackoverflow.com/users/3518203/shin) on [stackoverflow](https://stackoverflow.com/questions/23208200/how-to-darken-a-background-using-css)
+how to align vertically and horizontally - by Sinjai at https://stackoverflow.com/questions/953918/
+
+how-to-align-a-div-to-the-middle-horizontally-width-of-the-page
+how to change color of placeholders - by Codehal at https://codehalweb.com/how-to-change-placeholder-color-in-html-and-css/
 
 
-flexbox - wrap content: 
-[Mozilla](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap)
+how to use promise results - by jfriend00 at https://stackoverflow.com/questions/58674460/how-can-i-access-the-promise-result-from-outside-of-the-promise-body
 
 
-Styling form with label above inputs: 
-by [fin1te](https://stackoverflow.com/users/657830/fin1te) on [stackoverflow](https://stackoverflow.com/questions/6046110/styling-form-with-label-above-inputs)
+how to save and pass global variables - by Shmack at https://stackoverflow.com/questions/5786851/define-a-global-variable-in-a-javascript-function
 
 
-country list for select/dropdown: 
-by [Dan Rovito](https://gist.github.com/danrovito) on [github](https://gist.github.com/danrovito/977bcb97c9c2dfd3398a)
+how to use localstorage and sessionstorage - by https://javascript.info/localstorage
 
 
-how to use details and summaries: 
-[W3S](https://www.w3schools.com/tags/tag_summary.asp)
+fixed footer at https://www.w3schools.com/howto/howto_css_fixed_footer.asp
 
 
-change style of hidden radiobutton + label: 
-by [PSL](https://stackoverflow.com/users/1009603/psl) on [stackoverflow](https://stackoverflow.com/questions/16839747/this-css-not-working-for-radio-button-selection)
+overflow scroll by animuson at https://stackoverflow.com/questions/9707397/making-a-div-vertically-scrollable-using-css
 
 
-vertically center when absolute positioning: 
-by [Manisha Basra](https://medium.com/@jscodelover?source=post_page-----ea3a9d0ad72e--------------------------------) on [Medium](https://medium.com/front-end-weekly/absolute-centering-in-css-ea3a9d0ad72e)
+adjust scrollbar style at https://www.w3schools.com/HOWTO/howto_css_custom_scrollbar.asp
+
+
+prevent reload mobile page on overscroll https://stackoverflow.com/questions/67076896/javascript-disable-page-refresh-on-mobile-device
+
+
+prevent reload page on scroll at all by Alexander Grossmann at https://www.the-koi.com/projects/how-to-disable-pull-to-refresh/
+
+
+numberformatting in js at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+
+
+setIntervall timer and clear it at https://www.w3schools.com/js/js_timing.asp
+
+
+make background blurry at https://cloudinary.com/blog/adding-blur-effect-background-image-css#:~:text=The%20syntax%20of%20the%20CSS,area%20behind%20the%20target%20element.
+
+
+leading zeros numberformatting: https://www.theleadingzero.co.uk/leading-zeros-in-javascript#:~:text=To%20format%20a%20number%20with,it%20reaches%20the%20desired%20length.
+
+
+resize textareas at https://www.w3schools.com/howto/howto_css_disable_resize_textarea.asp
+
+
+wrap text in dropdowns by yhan at https://community.ptc.com/t5/ThingWorx-Developers/How-to-make-that-dropdown-selected-text-in-multi-line-wrap/td-p/729630
+
+
+working with fetch, async and await at https://dev.to/tienbku/javascript-fetch-getpostputdelete-example-3dmp
+
+
+retrieve date information at https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+
 
 CodeInstitute:
 Thank you for this opportunity
 
 ## Media
-In order of appearance:
-- [festival01](assets/img/festival01.jpg) by [Sebastian Ervi](https://www.pexels.com/@sebastian-ervi-866902/) on [pexels.com](https://www.pexels.com/photo/silhouette-of-people-in-front-of-stage-1763067/)
-- [festival02](assets/img/festival02.jpg) by [Wendy Wei](https://www.pexels.com/@wendywei/) on [pexels.com](https://www.pexels.com/photo/purple-fireworks-effect-1190298/)
-- [festival03](assets/img/festival03.jpg) by [Wendy Wei](https://www.pexels.com/@wendywei/) on [pexels.com](https://www.pexels.com/photo/people-having-a-concert-1190297/)
-- [festival05](assets/img/festival05.jpg) by [Ander Garcia](https://www.pexels.com/@ander-garcia-1317358711/) on [pexels.com](https://www.pexels.com/photo/tattooed-woman-with-braids-posing-on-grass-at-festival-25016443/)
-- [festival06](assets/img/festival06.jpg) by [Hamzeh Omari](https://www.pexels.com/@omari/) on [pexels.com](https://www.pexels.com/photo/a-dj-playing-music-and-audience-dancing-at-a-festival-20733818/)
-- [festival09](assets/img/festival09.jpg) by [Laura Stanley](https://www.pexels.com/@lstan/) on [pexels.com](https://www.pexels.com/photo/people-in-a-concert-2147029/)
-- [festival10](assets/img/festival10.jpg) by [Laura Stanley](https://www.pexels.com/@lstan/) on [pexels.com](https://www.pexels.com/photo/people-in-a-concert-2147029/)
-- [festival11](assets/img/festival11.jpg) by [Danial Duarte](https://www.pexels.com/@daniel-duarte-270529097/) on [pexels.com](https://www.pexels.com/photo/crowd-enjoying-themselves-at-a-festival-14670406/)
-- [festival12](assets/img/festival12.jpg) by [IslandHopper](https://www.pexels.com/@islandhopper-x-339537771/) on [pexels.com](https://www.pexels.com/photo/smiling-girls-in-sunglasses-at-holi-festival-15325734/)
-- [festival13](assets/img/festival) by [Riccardo Vespa](https://www.pexels.com/@riccardo-vespa-594469796/) on [pexels.com](https://www.pexels.com/photo/back-view-of-men-playing-music-on-stage-and-the-audience-having-fun-at-a-festival-17284331/)
-- [festival18](assets/img/festival) by [Wendy Wei](https://www.pexels.com/@wendywei/) on [pexels.com](https://www.pexels.com/photo/several-people-at-a-party-1540338/)
-
-
-- [festival video](https://videos.pexels.com/video-files/3941287/3941287-uhd_2560_1440_30fps.mp4 ) by [Tom Fisk](https://www.pexels.com/@tomfisk/) on [pexels.com](https://www.pexels.com/video/a-drone-footage-of-an-outdoor-concert-3941287/)
+No Media used - the logos are self-made. 
+As mentioned above, fontawesome has been used for icons.
